@@ -1,0 +1,178 @@
+2025-06-07 10:06:27.858 +01:00 [INF] Now listening on: https://localhost:7292
+2025-06-07 10:06:27.926 +01:00 [INF] Now listening on: http://localhost:5022
+2025-06-07 10:06:55.653 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7292/swagger/index.html - null null
+2025-06-07 10:06:57.342 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7292/swagger/index.html - 200 null text/html;charset=utf-8 1718.7499ms
+2025-06-07 10:06:57.634 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7292/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-07 10:06:57.660 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7292/_vs/browserLink - null null
+2025-06-07 10:06:57.680 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7292/_framework/aspnetcore-browser-refresh.js - 200 13782 application/javascript; charset=utf-8 45.5105ms
+2025-06-07 10:06:57.970 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7292/_vs/browserLink - 200 null text/javascript; charset=UTF-8 309.7638ms
+2025-06-07 10:06:58.536 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7292/swagger/v1/swagger.json - null null
+2025-06-07 10:06:58.661 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7292/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 125.2717ms
+2025-06-07 10:08:34.202 +01:00 [INF] Request starting HTTP/2 POST https://localhost:7292/api/InvestNaijaAuth - application/json 100
+2025-06-07 10:08:34.234 +01:00 [INF] Executing endpoint 'InvestNaijaAuth.Controllers.InvestNaijaAuthController.Signup (InvestNaijaAuth)'
+2025-06-07 10:08:34.323 +01:00 [INF] Route matched with {action = "Signup", controller = "InvestNaijaAuth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Signup(InvestNaijaAuth.DTO_s.SignupDTO) on controller InvestNaijaAuth.Controllers.InvestNaijaAuthController (InvestNaijaAuth).
+2025-06-07 10:08:35.094 +01:00 [INF] Received SignUpUser request. TraceId: 0HND5KAJ8IAPU:00000001, RequestedBy: Anonymous, Payload: {"Username":"moji fagbemi","HashedPassword":"moji_123","EmailAddress":"moji@gmail.com","$type":"SignupDTO"}
+2025-06-07 10:08:37.667 +01:00 [INF] Executed DbCommand (158ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = DateTime2), @p2='?' (DbType = DateTime2), @p3='?' (Size = 4000), @p4='?' (Size = 4000), @p5='?' (DbType = Boolean), @p6='?' (DbType = DateTime2), @p7='?' (DbType = DateTime2), @p8='?' (Size = 4000), @p9='?' (Precision = 18) (Scale = 4) (DbType = Decimal)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [user] ([Id], [CreatedAt], [DeletedAt], [EmailAddress], [HashedPassword], [IsDeleted], [RestoredAt], [UpdatedAt], [Username], [WalletBalance])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9);
+2025-06-07 10:08:37.725 +01:00 [INF] User Successfully Created . TraceId : 0HND5KAJ8IAPU:00000001 , RequestedBy : Anonymous , Payload : {"Username":"moji fagbemi","HashedPassword":"moji_123","EmailAddress":"moji@gmail.com","$type":"SignupDTO"} , Username : moji fagbemi , Id : "3c9d88bf-2276-4bc7-93e0-b3d5dab64e59" 
+2025-06-07 10:08:37.753 +01:00 [INF] Executing CreatedAtActionResult, writing value of type 'InvestNaijaAuth.DTO_s.HashExclusionDTO'.
+2025-06-07 10:08:37.825 +01:00 [INF] Executed action InvestNaijaAuth.Controllers.InvestNaijaAuthController.Signup (InvestNaijaAuth) in 3473.7261ms
+2025-06-07 10:08:37.835 +01:00 [INF] Executed endpoint 'InvestNaijaAuth.Controllers.InvestNaijaAuthController.Signup (InvestNaijaAuth)'
+2025-06-07 10:08:37.854 +01:00 [INF] Request finished HTTP/2 POST https://localhost:7292/api/InvestNaijaAuth - 201 null application/json; charset=utf-8 3654.2582ms
+2025-06-07 10:34:05.138 +01:00 [INF] Now listening on: https://localhost:7292
+2025-06-07 10:34:05.294 +01:00 [INF] Now listening on: http://localhost:5022
+2025-06-07 10:34:22.185 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7292/swagger/index.html - null null
+2025-06-07 10:34:22.822 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7292/swagger/index.html - 200 null text/html;charset=utf-8 657.1796ms
+2025-06-07 10:34:23.155 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7292/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-07 10:34:23.166 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7292/_vs/browserLink - null null
+2025-06-07 10:34:23.265 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7292/_framework/aspnetcore-browser-refresh.js - 200 13782 application/javascript; charset=utf-8 110.0508ms
+2025-06-07 10:34:23.458 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7292/_vs/browserLink - 200 null text/javascript; charset=UTF-8 292.2647ms
+2025-06-07 10:34:24.080 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7292/swagger/v1/swagger.json - null null
+2025-06-07 10:34:24.546 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7292/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 466.1814ms
+2025-06-07 10:35:41.124 +01:00 [INF] Request starting HTTP/2 POST https://localhost:7292/api/InvestNaijaAuth - application/json 101
+2025-06-07 10:35:41.158 +01:00 [INF] Executing endpoint 'InvestNaijaAuth.Controllers.InvestNaijaAuthController.Signup (InvestNaijaAuth)'
+2025-06-07 10:35:41.223 +01:00 [INF] Route matched with {action = "Signup", controller = "InvestNaijaAuth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Signup(InvestNaijaAuth.DTO_s.SignupDTO) on controller InvestNaijaAuth.Controllers.InvestNaijaAuthController (InvestNaijaAuth).
+2025-06-07 10:35:41.875 +01:00 [INF] Received SignUpUser request. TraceId: 0HND5KPTV89VJ:00000001, RequestedBy: Anonymous, Payload: {"Username":"wale fagbemi","HashedPassword":"walex_123","EmailAddress":"wale@gmail.com","$type":"SignupDTO"}
+2025-06-07 10:35:44.580 +01:00 [INF] Executed DbCommand (123ms) [Parameters=[@__signup_Username_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [user] AS [u]
+        WHERE [u].[Username] = @__signup_Username_0) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-06-07 10:35:44.683 +01:00 [INF] Executed DbCommand (10ms) [Parameters=[@__signup_EmailAddress_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [user] AS [u]
+        WHERE [u].[EmailAddress] = @__signup_EmailAddress_0) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-06-07 10:35:45.121 +01:00 [INF] Executed DbCommand (18ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = DateTime2), @p2='?' (DbType = DateTime2), @p3='?' (Size = 4000), @p4='?' (Size = 4000), @p5='?' (DbType = Boolean), @p6='?' (DbType = DateTime2), @p7='?' (DbType = DateTime2), @p8='?' (Size = 4000), @p9='?' (Precision = 18) (Scale = 4) (DbType = Decimal)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [user] ([Id], [CreatedAt], [DeletedAt], [EmailAddress], [HashedPassword], [IsDeleted], [RestoredAt], [UpdatedAt], [Username], [WalletBalance])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9);
+2025-06-07 10:35:45.154 +01:00 [INF] User Successfully Created . TraceId : 0HND5KPTV89VJ:00000001 , RequestedBy : Anonymous , Payload : {"Username":"wale fagbemi","HashedPassword":"walex_123","EmailAddress":"wale@gmail.com","$type":"SignupDTO"} , Username : wale fagbemi , Id : "97ca10d5-5f6f-4652-bce4-fbf82d8fc24c" 
+2025-06-07 10:35:45.200 +01:00 [INF] Executing CreatedAtActionResult, writing value of type 'InvestNaijaAuth.DTO_s.HashExclusionDTO'.
+2025-06-07 10:35:45.281 +01:00 [INF] Executed action InvestNaijaAuth.Controllers.InvestNaijaAuthController.Signup (InvestNaijaAuth) in 4046.0105ms
+2025-06-07 10:35:45.287 +01:00 [INF] Executed endpoint 'InvestNaijaAuth.Controllers.InvestNaijaAuthController.Signup (InvestNaijaAuth)'
+2025-06-07 10:35:45.316 +01:00 [INF] Request finished HTTP/2 POST https://localhost:7292/api/InvestNaijaAuth - 201 null application/json; charset=utf-8 4192.2235ms
+2025-06-07 10:38:19.177 +01:00 [INF] Request starting HTTP/2 POST https://localhost:7292/api/InvestNaijaAuth - application/json 100
+2025-06-07 10:38:19.207 +01:00 [INF] Executing endpoint 'InvestNaijaAuth.Controllers.InvestNaijaAuthController.Signup (InvestNaijaAuth)'
+2025-06-07 10:38:19.211 +01:00 [INF] Route matched with {action = "Signup", controller = "InvestNaijaAuth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Signup(InvestNaijaAuth.DTO_s.SignupDTO) on controller InvestNaijaAuth.Controllers.InvestNaijaAuthController (InvestNaijaAuth).
+2025-06-07 10:38:19.223 +01:00 [INF] Received SignUpUser request. TraceId: 0HND5KPTV89VK:00000001, RequestedBy: Anonymous, Payload: {"Username":"wale fagbemi","HashedPassword":"moji_123","EmailAddress":"moji@gmail.com","$type":"SignupDTO"}
+2025-06-07 10:38:19.309 +01:00 [INF] Executed DbCommand (34ms) [Parameters=[@__signup_Username_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [user] AS [u]
+        WHERE [u].[Username] = @__signup_Username_0) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-06-07 10:38:19.330 +01:00 [INF] Executed DbCommand (13ms) [Parameters=[@__signup_EmailAddress_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [user] AS [u]
+        WHERE [u].[EmailAddress] = @__signup_EmailAddress_0) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-06-07 10:38:19.338 +01:00 [INF] Executing BadRequestObjectResult, writing value of type '<>f__AnonymousType0`1[[System.Collections.Generic.Dictionary`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-06-07 10:38:19.359 +01:00 [INF] Executed action InvestNaijaAuth.Controllers.InvestNaijaAuthController.Signup (InvestNaijaAuth) in 142.4328ms
+2025-06-07 10:38:19.414 +01:00 [INF] Executed endpoint 'InvestNaijaAuth.Controllers.InvestNaijaAuthController.Signup (InvestNaijaAuth)'
+2025-06-07 10:38:19.419 +01:00 [INF] Request finished HTTP/2 POST https://localhost:7292/api/InvestNaijaAuth - 400 null application/json; charset=utf-8 250.8198ms
+2025-06-07 10:55:07.308 +01:00 [INF] Now listening on: https://localhost:7292
+2025-06-07 10:55:07.379 +01:00 [INF] Now listening on: http://localhost:5022
+2025-06-07 10:55:16.567 +01:00 [INF] Request starting HTTP/2 POST https://localhost:7292/api/InvestNaijaAuth - application/json 100
+2025-06-07 10:55:16.694 +01:00 [INF] Executing endpoint 'InvestNaijaAuth.Controllers.InvestNaijaAuthController.Signup (InvestNaijaAuth)'
+2025-06-07 10:55:16.772 +01:00 [INF] Route matched with {action = "Signup", controller = "InvestNaijaAuth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Signup(InvestNaijaAuth.DTO_s.SignupDTO) on controller InvestNaijaAuth.Controllers.InvestNaijaAuthController (InvestNaijaAuth).
+2025-06-07 10:55:17.405 +01:00 [INF] Received SignUpUser request. TraceId: 0HND5L5JPEMI7:00000001, RequestedBy: Anonymous, Payload: {"Username":"moji fagbemi","HashedPassword":"moji_123","EmailAddress":"wale@gmail.com","$type":"SignupDTO"}
+2025-06-07 10:55:20.344 +01:00 [INF] Executed DbCommand (142ms) [Parameters=[@__signup_Username_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [user] AS [u]
+        WHERE [u].[Username] = @__signup_Username_0) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-06-07 10:55:20.429 +01:00 [INF] Executed DbCommand (7ms) [Parameters=[@__signup_EmailAddress_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [user] AS [u]
+        WHERE [u].[EmailAddress] = @__signup_EmailAddress_0) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-06-07 10:55:20.460 +01:00 [INF] Executing BadRequestObjectResult, writing value of type '<>f__AnonymousType0`1[[System.Collections.Generic.Dictionary`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-06-07 10:55:20.502 +01:00 [INF] Executed action InvestNaijaAuth.Controllers.InvestNaijaAuthController.Signup (InvestNaijaAuth) in 3708.9789ms
+2025-06-07 10:55:20.516 +01:00 [INF] Executed endpoint 'InvestNaijaAuth.Controllers.InvestNaijaAuthController.Signup (InvestNaijaAuth)'
+2025-06-07 10:55:20.561 +01:00 [INF] Request finished HTTP/2 POST https://localhost:7292/api/InvestNaijaAuth - 400 null application/json; charset=utf-8 4020.8611ms
+2025-06-07 10:56:06.594 +01:00 [INF] Request starting HTTP/2 POST https://localhost:7292/api/InvestNaijaAuth - application/json 101
+2025-06-07 10:56:06.609 +01:00 [INF] Executing endpoint 'InvestNaijaAuth.Controllers.InvestNaijaAuthController.Signup (InvestNaijaAuth)'
+2025-06-07 10:56:06.615 +01:00 [INF] Route matched with {action = "Signup", controller = "InvestNaijaAuth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Signup(InvestNaijaAuth.DTO_s.SignupDTO) on controller InvestNaijaAuth.Controllers.InvestNaijaAuthController (InvestNaijaAuth).
+2025-06-07 10:56:06.627 +01:00 [INF] Received SignUpUser request. TraceId: 0HND5L5JPEMI8:00000001, RequestedBy: Anonymous, Payload: {"Username":"moji fagbemi","HashedPassword":"walex_123","EmailAddress":"moji@gmail.com","$type":"SignupDTO"}
+2025-06-07 10:56:06.700 +01:00 [INF] Executed DbCommand (14ms) [Parameters=[@__signup_Username_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [user] AS [u]
+        WHERE [u].[Username] = @__signup_Username_0) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-06-07 10:56:06.710 +01:00 [INF] Executed DbCommand (3ms) [Parameters=[@__signup_EmailAddress_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [user] AS [u]
+        WHERE [u].[EmailAddress] = @__signup_EmailAddress_0) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-06-07 10:56:07.123 +01:00 [INF] Executed DbCommand (16ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = DateTime2), @p2='?' (DbType = DateTime2), @p3='?' (Size = 4000), @p4='?' (Size = 4000), @p5='?' (DbType = Boolean), @p6='?' (DbType = DateTime2), @p7='?' (DbType = DateTime2), @p8='?' (Size = 4000), @p9='?' (Precision = 18) (Scale = 4) (DbType = Decimal)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [user] ([Id], [CreatedAt], [DeletedAt], [EmailAddress], [HashedPassword], [IsDeleted], [RestoredAt], [UpdatedAt], [Username], [WalletBalance])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9);
+2025-06-07 10:56:07.173 +01:00 [INF] User Successfully Created . TraceId : 0HND5L5JPEMI8:00000001 , RequestedBy : Anonymous , Payload : {"Username":"moji fagbemi","HashedPassword":"walex_123","EmailAddress":"moji@gmail.com","$type":"SignupDTO"} , Username : moji fagbemi , Id : "dcd93609-5fba-44c7-adfe-2446c4003824" 
+2025-06-07 10:56:07.234 +01:00 [INF] Executing CreatedAtActionResult, writing value of type 'InvestNaijaAuth.DTO_s.HashExclusionDTO'.
+2025-06-07 10:56:07.293 +01:00 [INF] Executed action InvestNaijaAuth.Controllers.InvestNaijaAuthController.Signup (InvestNaijaAuth) in 672.1316ms
+2025-06-07 10:56:07.302 +01:00 [INF] Executed endpoint 'InvestNaijaAuth.Controllers.InvestNaijaAuthController.Signup (InvestNaijaAuth)'
+2025-06-07 10:56:07.306 +01:00 [INF] Request finished HTTP/2 POST https://localhost:7292/api/InvestNaijaAuth - 201 null application/json; charset=utf-8 712.0933ms
+2025-06-07 11:06:28.562 +01:00 [INF] Now listening on: https://localhost:7292
+2025-06-07 11:06:28.606 +01:00 [INF] Now listening on: http://localhost:5022
+2025-06-07 11:07:43.687 +01:00 [INF] Request starting HTTP/2 POST https://localhost:7292/api/InvestNaijaAuth - application/json 101
+2025-06-07 11:07:43.864 +01:00 [INF] Executing endpoint 'InvestNaijaAuth.Controllers.InvestNaijaAuthController.Signup (InvestNaijaAuth)'
+2025-06-07 11:07:43.952 +01:00 [INF] Route matched with {action = "Signup", controller = "InvestNaijaAuth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Signup(InvestNaijaAuth.DTO_s.SignupDTO) on controller InvestNaijaAuth.Controllers.InvestNaijaAuthController (InvestNaijaAuth).
+2025-06-07 11:07:45.646 +01:00 [INF] Received SignUpUser request. TraceId: 0HND5LCIEMBGM:00000001, RequestedBy: Anonymous, Payload: {"Username":"moji fagbemi","HashedPassword":"walex_123","EmailAddress":"moji@gmail.com","$type":"SignupDTO"}
+2025-06-07 11:07:49.507 +01:00 [INF] Executed DbCommand (237ms) [Parameters=[@__signup_Username_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [user] AS [u]
+        WHERE [u].[Username] = @__signup_Username_0) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-06-07 11:07:49.666 +01:00 [INF] Executed DbCommand (36ms) [Parameters=[@__signup_EmailAddress_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [user] AS [u]
+        WHERE [u].[EmailAddress] = @__signup_EmailAddress_0) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-06-07 11:07:49.739 +01:00 [INF] Executed DbCommand (51ms) [Parameters=[@__signup_HashedPassword_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [user] AS [u]
+        WHERE [u].[HashedPassword] = @__signup_HashedPassword_0) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-06-07 11:07:49.767 +01:00 [INF] Executing BadRequestObjectResult, writing value of type '<>f__AnonymousType0`1[[System.Collections.Generic.Dictionary`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-06-07 11:07:49.829 +01:00 [INF] Executed action InvestNaijaAuth.Controllers.InvestNaijaAuthController.Signup (InvestNaijaAuth) in 5860.8766ms
+2025-06-07 11:07:49.844 +01:00 [INF] Executed endpoint 'InvestNaijaAuth.Controllers.InvestNaijaAuthController.Signup (InvestNaijaAuth)'
+2025-06-07 11:07:49.885 +01:00 [INF] Request finished HTTP/2 POST https://localhost:7292/api/InvestNaijaAuth - 400 null application/json; charset=utf-8 6218.8502ms

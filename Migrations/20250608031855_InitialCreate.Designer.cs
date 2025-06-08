@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace InvestNaijaAuth.Migrations
 {
     [DbContext(typeof(InvestNaijaDBContext))]
-    [Migration("20250607110335_InitalCreate")]
-    partial class InitalCreate
+    [Migration("20250608031855_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -40,9 +40,6 @@ namespace InvestNaijaAuth.Migrations
 
                     b.Property<DateTime>("ExpiresAt")
                         .HasColumnType("datetime2");
-
-                    b.Property<int>("Guid")
-                        .HasColumnType("int");
 
                     b.Property<string>("RefreshToken")
                         .IsRequired()
@@ -81,7 +78,7 @@ namespace InvestNaijaAuth.Migrations
 
                     b.Property<string>("EmailAddress")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("HashedPassword")
                         .IsRequired()
@@ -119,7 +116,7 @@ namespace InvestNaijaAuth.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("EmailAddress")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<DateTime?>("LoggedInAt")
                         .HasColumnType("datetime2");
@@ -130,12 +127,9 @@ namespace InvestNaijaAuth.Migrations
                     b.Property<string>("RefreshSessionToken")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid>("UserId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("EmailAddress");
 
                     b.ToTable("UserSessions");
                 });
@@ -155,9 +149,8 @@ namespace InvestNaijaAuth.Migrations
                 {
                     b.HasOne("InvestNaijaAuth.Entities.User", "User")
                         .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("EmailAddress")
+                        .HasPrincipalKey("EmailAddress");
 
                     b.Navigation("User");
                 });

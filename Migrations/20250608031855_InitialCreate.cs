@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace InvestNaijaAuth.Migrations
 {
     /// <inheritdoc />
-    public partial class InitalCreate : Migration
+    public partial class InitialCreate : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -17,7 +17,7 @@ namespace InvestNaijaAuth.Migrations
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Username = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    EmailAddress = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    EmailAddress = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     HashedPassword = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
@@ -29,6 +29,7 @@ namespace InvestNaijaAuth.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_user", x => x.Id);
+                    table.UniqueConstraint("AK_user_EmailAddress", x => x.EmailAddress);
                 });
 
             migrationBuilder.CreateTable(
@@ -36,7 +37,6 @@ namespace InvestNaijaAuth.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Guid = table.Column<int>(type: "int", nullable: false),
                     RefreshToken = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ExpiresAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Created = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -62,8 +62,7 @@ namespace InvestNaijaAuth.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    EmailAddress = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    UserId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    EmailAddress = table.Column<string>(type: "nvarchar(450)", nullable: true),
                     LoggedInAt = table.Column<DateTime>(type: "datetime2", nullable: true),
                     LoggedOutAt = table.Column<DateTime>(type: "datetime2", nullable: true),
                     AccessSessionToken = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -73,11 +72,10 @@ namespace InvestNaijaAuth.Migrations
                 {
                     table.PrimaryKey("PK_UserSessions", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_UserSessions_user_UserId",
-                        column: x => x.UserId,
+                        name: "FK_UserSessions_user_EmailAddress",
+                        column: x => x.EmailAddress,
                         principalTable: "user",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "EmailAddress");
                 });
 
             migrationBuilder.CreateIndex(
@@ -86,9 +84,9 @@ namespace InvestNaijaAuth.Migrations
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_UserSessions_UserId",
+                name: "IX_UserSessions_EmailAddress",
                 table: "UserSessions",
-                column: "UserId");
+                column: "EmailAddress");
         }
 
         /// <inheritdoc />

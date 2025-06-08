@@ -3,8 +3,6 @@ using InvestNaijaAuth.Data;
 using InvestNaijaAuth.DTO_s;
 using Microsoft.AspNetCore.Mvc;
 using InvestNaijaAuth.Servicies;
-using System.Diagnostics;
-using System;
 using InvestNaijaAuth.Entities;
 using Microsoft.EntityFrameworkCore;
 
@@ -18,22 +16,25 @@ namespace InvestNaijaAuth.Controllers
         private readonly InvestNaijaDBContext _context;
         private readonly IMapper _mapper;
         private readonly ILogger<InvestNaijaAuthController> _logger;
+        private readonly ITokenService _tokenservice;
 
         public InvestNaijaAuthController(
                            IConfiguration configuration,
                            InvestNaijaDBContext context,
                            IMapper mapper,
-                           ILogger<InvestNaijaAuthController> logger
+                           ILogger<InvestNaijaAuthController> logger,
+                           ITokenService tokenService
                            )
         {
             _configuration = configuration;
             _context = context;
             _mapper = mapper;
             _logger = logger;
+            _tokenservice = tokenService;
 
         }
 
-        [HttpPost]
+        [HttpPost("Signup")]
         public async Task<IActionResult> Signup(SignupDTO signup)
         {
 
@@ -97,30 +98,92 @@ namespace InvestNaijaAuth.Controllers
         public async Task<IActionResult> Login(LoginDTO login)
         {
             var requestId = HttpContext.TraceIdentifier;
-
-            if (login == null)
-            {
-                _logger.LogError("No User information provided . TraceId: {requestId}, RequestedBy : {EmailAddress} , Payload: {@LoginDTO}", requestId, login.EmailAddress, login);
-                return BadRequest();
-            }
+            string accessToken = String.Empty;
+            RefreshTokens refreshToken = null;
 
             _logger.LogInformation("Received User Login request. TraceId: {requestId}, RequestedBy: {EmailAddress}, Payload: {@LoginDTO}", requestId, login.EmailAddress, login);
+
+            if (String.IsNullOrWhiteSpace(login.EmailAddress) || String.IsNullOrWhiteSpace(login.HashedPassword))
+            {
+                _logger.LogError("No User information provided . TraceId: {requestId}, RequestedBy : {EmailAddress} , Payload: {@LoginDTO}", requestId, login.EmailAddress, login);
+                return BadRequest("Email and password are required");
+            }
 
             try
             {
                 var Loginentity = await _context.user
-                       .FirstOrDefaultAsync(l => l.EmailAddress == login.EmailAddress);
-                var loginsessions = await _context.UserSessions
-                    .FirstOrDefaultAsync(t => t.Email == logindto.Email);
+                    .FirstOrDefaultAsync(l => l.EmailAddress == login.EmailAddress && !l.IsDeleted);
 
+                if (Loginentity is null)
+                {
+                    _logger.LogError("User doesn't Exist on the Database , TraceId : {requestId} , RequestedBy : {EmailAddress} , Payload : {@LoginDTO} ", requestId, login.EmailAddress, login);
+                    return Unauthorized("Invalid Credentials !!!");
+                }
+
+                _logger.LogInformation("User Exists on the Database, TraceId : {requestId} , RequestedBy {Username} ,", requestId, Loginentity.Username);
+
+                if (login.HashedPassword == Loginentity.HashedPassword && login.EmailAddress == Loginentity.EmailAddress)
+                {
+                    _logger.LogInformation("Credentials Successfully Verified , TraceId : {requestId} , RequestedBy : {Username} , Payload : {LoginDTO} ", requestId, Loginentity.Username, login);
+
+                    var ipAddress = HttpContext.Connection.RemoteIpAddress?.ToString() ?? "unknown";
+
+                    // Generate tokens
+                    accessToken = _tokenservice.CreateAccessToken(Loginentity);
+                    refreshToken = _tokenservice.CreateRefreshToken(ipAddress);
+
+                    // Get or create user session
+                    var userSession = await _context.UserSessions
+                        .FirstOrDefaultAsync(s => s.EmailAddress == login.EmailAddress);
+
+                    if (userSession == null)
+                    {
+                        userSession = new UserSessions
+                        {
+                            Id = Guid.NewGuid(),
+                            User = Loginentity,
+                            EmailAddress = Loginentity.EmailAddress
+                        };
+                        _context.UserSessions.Add(userSession);
+                    }
+
+                    // Update session
+                    userSession.LoggedInAt = DateTime.UtcNow;
+                    userSession.AccessSessionToken = accessToken;
+                    userSession.RefreshSessionToken = refreshToken.RefreshToken;
+
+                    // Save refresh token
+                    refreshToken.UserId = Loginentity.Id;
+                    _context.RefreshTokens.Add(refreshToken);
+
+                    await _context.SaveChangesAsync();
+
+                    return Ok(new
+                    {
+                        AccessToken = accessToken,
+                        RefreshToken = refreshToken.RefreshToken,
+                        User = new
+                        {
+                            Id = Loginentity.Id,
+                            Username = Loginentity.Username,
+                            EmailAddress = Loginentity.EmailAddress
+                        }
+                    });
+                }
+                else
+                {
+                    _logger.LogError("Invalid Credentials , TraceId : {requestId} , RequestedBy : {Username} , Payload : {LoginDTO} ", requestId, Loginentity.Username, login);
+                    return Unauthorized();
+                }
             }
             catch (Exception ex)
             {
-
+                _logger.LogError(ex, "Error occurred during login. TraceId: {requestId}, RequestedBy: {EmailAddress}", requestId, login.EmailAddress);
+                return StatusCode(500, "An error occurred while processing your login request.");
             }
-
-
         }
+        
     }
+
 
 }

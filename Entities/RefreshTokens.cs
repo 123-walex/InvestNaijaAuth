@@ -4,7 +4,7 @@ namespace InvestNaijaAuth.Entities
 {
     public class RefreshTokens
     {
-        public int Guid { get; set; }
+        public Guid Id { get; set; } = Guid.NewGuid();
         public string RefreshToken { get; set; } = null!;
         public DateTime ExpiresAt { get; set; }
         public bool IsExpired => DateTime.UtcNow >= ExpiresAt;
@@ -14,7 +14,7 @@ namespace InvestNaijaAuth.Entities
         public string? RevokedByIp { get; set; }
         public string? ReplacedByToken { get; set; }
         public bool IsActive => Revoked == null && !IsExpired;
-        public Guid Id { get; set; }
+        public Guid UserId { get; set; }
         public User User { get; set; } = null!;
     }
 }

@@ -5,23 +5,10 @@ using Serilog.Exceptions;
 using Swashbuckle.AspNetCore;
 using InvestNaijaAuth.Mappings;
 using InvestNaijaAuth.MiddleWare;
-
-var builder = WebApplication.CreateBuilder(args);
-
-builder.Services.AddControllers();
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
-
-builder.Services.AddDbContext<InvestNaijaDBContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
-
-builder.Host.UseSerilog();
-
-builder.Services.AddAutoMapper(typeof(MappingProfile));
-
-var app = builder.Build();
-
-app.UseMiddleware<TraceIdEnricherMiddleWare>();
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
+using InvestNaijaAuth.Servicies;
 
 Log.Logger = new LoggerConfiguration()
     .Enrich.FromLogContext()
@@ -34,30 +21,84 @@ Log.Logger = new LoggerConfiguration()
         "[{Timestamp:yyyy-MM-dd HH:mm:ss.fff} {Level:u3}] [TraceId: {TraceId}] {Message:lj}{NewLine}{Exception}")
     .CreateLogger();
 
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+try
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+    var builder = WebApplication.CreateBuilder(args);
 
-app.UseHttpsRedirection();
-app.Use(async (context, next) =>
-{
-    var traceId = context.TraceIdentifier;
-    var userId = context.User.Identity?.IsAuthenticated == true
-        ? context.User.Identity.Name
-        : "Anonymous";
+    builder.Services.AddControllers();
+    builder.Services.AddEndpointsApiExplorer();
+    builder.Services.AddSwaggerGen();
 
-    using (Serilog.Context.LogContext.PushProperty("TraceId", traceId))
-    using (Serilog.Context.LogContext.PushProperty("User", userId))
+    builder.Services.AddDbContext<InvestNaijaDBContext>(options =>
+        options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+    builder.Services.Configure<AzureBlobSettings>(
+        builder.Configuration.GetSection("AzureBlobSettings"));
+
+    builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+        .AddJwtBearer(options =>
+        {
+            options.TokenValidationParameters = new TokenValidationParameters
+            {
+                ValidateIssuer = true,
+                ValidIssuer = builder.Configuration["JwtSettings:Issuer"],
+                ValidateAudience = true,
+                ValidAudience = builder.Configuration["JwtSettings:Audience"],
+                ValidateLifetime = true,
+                IssuerSigningKey = new SymmetricSecurityKey(
+                    Encoding.UTF8.GetBytes(builder.Configuration.GetValue<String>("JwtSettings:AccessToken")!)
+                ),
+                ValidateIssuerSigningKey = true
+            };
+        });
+
+    builder.Host.UseSerilog();
+
+    builder.Services.AddAutoMapper(typeof(MappingProfile));
+
+    builder.Services.AddScoped<ITokenService, TokenService>();
+    builder.Services.AddScoped<AzureBlobService>();
+
+    var app = builder.Build();
+
+    app.UseMiddleware<TraceIdEnricherMiddleWare>();
+
+    // Configure the HTTP request pipeline
+    if (app.Environment.IsDevelopment())
     {
-        await next();
+        app.UseSwagger();
+        app.UseSwaggerUI();
     }
-});
 
-app.UseAuthorization();
+    app.UseHttpsRedirection();
 
-app.MapControllers();
+    // Add logging middleware
+    app.Use(async (context, next) =>
+    {
+        var traceId = context.TraceIdentifier;
+        var userId = context.User.Identity?.IsAuthenticated == true
+            ? context.User.Identity.Name
+            : "Anonymous";
 
-app.Run();
+        using (Serilog.Context.LogContext.PushProperty("TraceId", traceId))
+        using (Serilog.Context.LogContext.PushProperty("User", userId))
+        {
+            await next();
+        }
+    });
+
+    app.UseAuthentication();
+    app.UseAuthorization();
+
+    app.MapControllers();
+
+    app.Run();
+}
+catch (Exception ex)
+{
+    Log.Fatal(ex, "Application start-up failed");
+}
+finally
+{
+    Log.CloseAndFlush();
+}

@@ -10,9 +10,11 @@ namespace InvestNaijaAuth.Data
         {
         }
 
-        public DbSet<User> user { get; set; }
+        public DbSet<User> User { get; set; }
         public DbSet<UserSessions> UserSessions { get; set; }
         public DbSet<RefreshTokens> RefreshTokens { get; set; }
+        public DbSet<Wallet> Wallet { get; set; } 
+        public DbSet<WalletTransaction> WalletTransaction { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -25,6 +27,7 @@ namespace InvestNaijaAuth.Data
                 entity.Property(e => e.EmailAddress).IsRequired();
                 entity.Property(e => e.Username).IsRequired();
                 entity.Property(e => e.HashedPassword).IsRequired();
+                entity.HasIndex(e => e.EmailAddress).IsUnique();
             });
 
             // Configure UserSessions entity
@@ -32,9 +35,10 @@ namespace InvestNaijaAuth.Data
             {
                 entity.HasKey(e => e.Id);
                 entity.HasOne(e => e.User)
-                    .WithMany()
+                    .WithMany(u => u.Sessions)
                     .HasForeignKey(e => e.EmailAddress)
-                    .HasPrincipalKey(u => u.EmailAddress);
+                    .HasPrincipalKey(u => u.EmailAddress)
+                    .OnDelete(DeleteBehavior.Cascade);
             });
 
             // Configure RefreshTokens entity
@@ -42,9 +46,19 @@ namespace InvestNaijaAuth.Data
             {
                 entity.HasKey(e => e.Id);
                 entity.HasOne(e => e.User)
-                    .WithMany()
-                    .HasForeignKey(e => e.UserId);
+                    .WithMany(u => u.RefreshTokens)
+                    .HasForeignKey(e => e.UserId)
+                    .OnDelete(DeleteBehavior.Cascade);
             });
+
+            modelBuilder.Entity<Wallet>()
+                .HasMany(w => w.Transactions)
+                .WithOne(t => t.Wallet)
+                .HasForeignKey(t => t.WalletId);
+
+            modelBuilder.Entity<WalletTransaction>()
+                .Property(w => w.Type)
+                .HasConversion<string>();
         }
     }
 }

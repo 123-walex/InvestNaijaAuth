@@ -70,6 +70,7 @@ namespace InvestNaijaAuth.Controllers
 
             return Ok(new { Url = videoUrl });
         }
-
+        
+        
     }
 }

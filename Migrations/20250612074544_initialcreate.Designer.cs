@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace InvestNaijaAuth.Migrations
 {
     [DbContext(typeof(InvestNaijaDBContext))]
-    [Migration("20250608031855_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20250612074544_initialcreate")]
+    partial class initialcreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -78,14 +78,19 @@ namespace InvestNaijaAuth.Migrations
 
                     b.Property<string>("EmailAddress")
                         .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
 
                     b.Property<string>("HashedPassword")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
+
+                    b.Property<int>("NoOfSessions")
+                        .HasColumnType("int");
 
                     b.Property<DateTime?>("RestoredAt")
                         .HasColumnType("datetime2");
@@ -103,7 +108,10 @@ namespace InvestNaijaAuth.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("user");
+                    b.HasIndex("EmailAddress")
+                        .IsUnique();
+
+                    b.ToTable("User");
                 });
 
             modelBuilder.Entity("InvestNaijaAuth.Entities.UserSessions", b =>
@@ -116,7 +124,8 @@ namespace InvestNaijaAuth.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("EmailAddress")
-                        .HasColumnType("nvarchar(450)");
+                        .IsRequired()
+                        .HasColumnType("nvarchar(256)");
 
                     b.Property<DateTime?>("LoggedInAt")
                         .HasColumnType("datetime2");
@@ -137,7 +146,7 @@ namespace InvestNaijaAuth.Migrations
             modelBuilder.Entity("InvestNaijaAuth.Entities.RefreshTokens", b =>
                 {
                     b.HasOne("InvestNaijaAuth.Entities.User", "User")
-                        .WithMany()
+                        .WithMany("RefreshTokens")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -148,11 +157,20 @@ namespace InvestNaijaAuth.Migrations
             modelBuilder.Entity("InvestNaijaAuth.Entities.UserSessions", b =>
                 {
                     b.HasOne("InvestNaijaAuth.Entities.User", "User")
-                        .WithMany()
+                        .WithMany("Sessions")
                         .HasForeignKey("EmailAddress")
-                        .HasPrincipalKey("EmailAddress");
+                        .HasPrincipalKey("EmailAddress")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("User");
+                });
+
+            modelBuilder.Entity("InvestNaijaAuth.Entities.User", b =>
+                {
+                    b.Navigation("RefreshTokens");
+
+                    b.Navigation("Sessions");
                 });
 #pragma warning restore 612, 618
         }

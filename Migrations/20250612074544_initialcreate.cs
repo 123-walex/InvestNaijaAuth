@@ -6,30 +6,31 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace InvestNaijaAuth.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialCreate : Migration
+    public partial class initialcreate : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "user",
+                name: "User",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Username = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    EmailAddress = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    HashedPassword = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    EmailAddress = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: false),
+                    HashedPassword = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: false),
                     UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
                     DeletedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
                     RestoredAt = table.Column<DateTime>(type: "datetime2", nullable: true),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
+                    NoOfSessions = table.Column<int>(type: "int", nullable: false),
                     WalletBalance = table.Column<decimal>(type: "decimal(18,2)", precision: 18, scale: 2, nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_user", x => x.Id);
-                    table.UniqueConstraint("AK_user_EmailAddress", x => x.EmailAddress);
+                    table.PrimaryKey("PK_User", x => x.Id);
+                    table.UniqueConstraint("AK_User_EmailAddress", x => x.EmailAddress);
                 });
 
             migrationBuilder.CreateTable(
@@ -50,9 +51,9 @@ namespace InvestNaijaAuth.Migrations
                 {
                     table.PrimaryKey("PK_RefreshTokens", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_RefreshTokens_user_UserId",
+                        name: "FK_RefreshTokens_User_UserId",
                         column: x => x.UserId,
-                        principalTable: "user",
+                        principalTable: "User",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -62,7 +63,7 @@ namespace InvestNaijaAuth.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    EmailAddress = table.Column<string>(type: "nvarchar(450)", nullable: true),
+                    EmailAddress = table.Column<string>(type: "nvarchar(256)", nullable: false),
                     LoggedInAt = table.Column<DateTime>(type: "datetime2", nullable: true),
                     LoggedOutAt = table.Column<DateTime>(type: "datetime2", nullable: true),
                     AccessSessionToken = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -72,16 +73,23 @@ namespace InvestNaijaAuth.Migrations
                 {
                     table.PrimaryKey("PK_UserSessions", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_UserSessions_user_EmailAddress",
+                        name: "FK_UserSessions_User_EmailAddress",
                         column: x => x.EmailAddress,
-                        principalTable: "user",
-                        principalColumn: "EmailAddress");
+                        principalTable: "User",
+                        principalColumn: "EmailAddress",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_RefreshTokens_UserId",
                 table: "RefreshTokens",
                 column: "UserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_User_EmailAddress",
+                table: "User",
+                column: "EmailAddress",
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_UserSessions_EmailAddress",
@@ -99,7 +107,7 @@ namespace InvestNaijaAuth.Migrations
                 name: "UserSessions");
 
             migrationBuilder.DropTable(
-                name: "user");
+                name: "User");
         }
     }
 }

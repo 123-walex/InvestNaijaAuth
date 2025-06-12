@@ -140,6 +140,60 @@ namespace InvestNaijaAuth.Migrations
                     b.ToTable("UserSessions");
                 });
 
+            modelBuilder.Entity("InvestNaijaAuth.Entities.Wallet", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<decimal>("Balance")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Wallet");
+                });
+
+            modelBuilder.Entity("InvestNaijaAuth.Entities.WalletTransaction", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<decimal>("Amount")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Type")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("WalletId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("WalletId");
+
+                    b.ToTable("WalletTransaction");
+                });
+
             modelBuilder.Entity("InvestNaijaAuth.Entities.RefreshTokens", b =>
                 {
                     b.HasOne("InvestNaijaAuth.Entities.User", "User")
@@ -163,11 +217,38 @@ namespace InvestNaijaAuth.Migrations
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("InvestNaijaAuth.Entities.Wallet", b =>
+                {
+                    b.HasOne("InvestNaijaAuth.Entities.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("InvestNaijaAuth.Entities.WalletTransaction", b =>
+                {
+                    b.HasOne("InvestNaijaAuth.Entities.Wallet", "Wallet")
+                        .WithMany("Transactions")
+                        .HasForeignKey("WalletId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Wallet");
+                });
+
             modelBuilder.Entity("InvestNaijaAuth.Entities.User", b =>
                 {
                     b.Navigation("RefreshTokens");
 
                     b.Navigation("Sessions");
+                });
+
+            modelBuilder.Entity("InvestNaijaAuth.Entities.Wallet", b =>
+                {
+                    b.Navigation("Transactions");
                 });
 #pragma warning restore 612, 618
         }

@@ -4,7 +4,7 @@ namespace InvestNaijaAuth.Entities
 {
     public class WalletTransaction
     {
-        public Guid Id { get; set; }
+        public Guid TransactionId { get; set; }
         public Guid WalletId { get; set; }
         public Wallet Wallet { get; set; }
 
@@ -12,6 +12,6 @@ namespace InvestNaijaAuth.Entities
         public TransactionType Type { get; set; }
         public string? Description { get; set; }
 
-        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+        public DateTime PerformedAt { get; set; } = DateTime.UtcNow;
     }
 }

@@ -57,7 +57,11 @@ try
     builder.Services.AddAutoMapper(typeof(MappingProfile));
 
     builder.Services.AddScoped<ITokenService, TokenService>();
+
     builder.Services.AddScoped<AzureBlobService>();
+
+    builder.Services.AddScoped<IWalletService, WalletService>();
+
 
     var app = builder.Build();
 

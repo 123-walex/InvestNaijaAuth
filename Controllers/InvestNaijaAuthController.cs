@@ -252,33 +252,6 @@ namespace InvestNaijaAuth.Controllers
                 return StatusCode(500, "An error occurred while logging out.");
             }
         }
-        [HttpGet("GetUserById/{Id}")]
-        public async Task<ActionResult<GetSingleUserDTO>> GetUserById(int Id)
-        {
-            var requestId1 = HttpContext.TraceIdentifier;
-            _logger.LogInformation("Entered {Method} with {Id}.", nameof(GetUserById), Id);
-
-            try
-            {
-                var User = await _context.Users
-                            .FirstOrDefaultAsync(u => u.Id == Id);
-
-                if (User is null)
-                {
-                    _logger.LogError("Request {TraceId} : The user with {Id} wasn't found or it doesnt exist", requestId1, Id);
-                    return NotFound();
-                }
-
-                var userDto = new GetSingleUserDTO(User.Id, User.UserName, User.Email);
-                _logger.LogInformation("Request {TraceId} : The user with Id {Id} and UserName {UserName} has been found", requestId1, Id, User.UserName);
-
-                return Ok(userDto);
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, "Request {TraceId} : An error occurred while fetching the users", requestId1);
-                return StatusCode(500, "Internal Server Error");
-            }
-        }
+       
     }
 }

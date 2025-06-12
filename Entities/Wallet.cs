@@ -2,8 +2,8 @@
 {
     public class Wallet
     {
-        public Guid Id { get; set; }
-        public decimal Balance { get; set; } = 0;
+        public Guid WalletId { get; set; } = Guid.NewGuid();
+        public decimal Balance { get; set; }
 
         public Guid UserId { get; set; }
         public User User { get; set; }

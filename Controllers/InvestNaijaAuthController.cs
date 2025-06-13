@@ -5,11 +5,13 @@ using Microsoft.AspNetCore.Mvc;
 using InvestNaijaAuth.Servicies;
 using InvestNaijaAuth.Entities;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
 
 namespace InvestNaijaAuth.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
+    [Authorize]
     public class InvestNaijaAuthController : ControllerBase
     {
         private readonly IConfiguration _configuration;
@@ -33,7 +35,7 @@ namespace InvestNaijaAuth.Controllers
             _tokenservice = tokenService;
 
         }
-
+        [Authorize(Roles = "Admin,User")]
         [HttpPost("Signup")]
         public async Task<IActionResult> Signup(SignupDTO signup)
         {
@@ -94,6 +96,7 @@ namespace InvestNaijaAuth.Controllers
             }
 
         }
+        [Authorize(Roles = "Admin,User")]
         [HttpPost("login")]
         public async Task<IActionResult> Login(LoginDTO login)
         {
@@ -193,6 +196,7 @@ namespace InvestNaijaAuth.Controllers
                 return StatusCode(500, "An error occurred while processing your login request");
             }
         }
+        [Authorize(Roles = "Admin,User")]
         [HttpPost("Logout")]
         public async Task<IActionResult> Logout(LogoutDTO logout)
         {

@@ -100,6 +100,7 @@ try
     app.UseAuthentication();
     app.UseAuthorization();
 
+    app.MapGet("/", () => "InvestNaijaAuth API is running!");
     app.MapControllers();
 
     app.Run();

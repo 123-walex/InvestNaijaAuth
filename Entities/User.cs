@@ -16,7 +16,7 @@ namespace InvestNaijaAuth.Entities
         [Required]
         [MaxLength(256)]
         public required string HashedPassword { get; set; }
-        
+        public required string Role { get; set; }
         public DateTime? UpdatedAt { get; set; }
         public DateTime? CreatedAt { get; set; }
         public DateTime? DeletedAt { get; set; }

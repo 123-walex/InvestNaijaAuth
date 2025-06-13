@@ -92,6 +92,10 @@ namespace InvestNaijaAuth.Migrations
                     b.Property<DateTime?>("RestoredAt")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("Role")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("datetime2");
 
@@ -142,7 +146,7 @@ namespace InvestNaijaAuth.Migrations
 
             modelBuilder.Entity("InvestNaijaAuth.Entities.Wallet", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<Guid>("WalletId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
@@ -158,7 +162,7 @@ namespace InvestNaijaAuth.Migrations
                     b.Property<Guid>("UserId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.HasKey("Id");
+                    b.HasKey("WalletId");
 
                     b.HasIndex("UserId");
 
@@ -167,18 +171,23 @@ namespace InvestNaijaAuth.Migrations
 
             modelBuilder.Entity("InvestNaijaAuth.Entities.WalletTransaction", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("DBId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("DBId"));
 
                     b.Property<decimal>("Amount")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
-
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("PerformedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("TransactionId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Type")
                         .IsRequired()
@@ -187,7 +196,7 @@ namespace InvestNaijaAuth.Migrations
                     b.Property<Guid>("WalletId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.HasKey("Id");
+                    b.HasKey("DBId");
 
                     b.HasIndex("WalletId");
 

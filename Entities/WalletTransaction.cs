@@ -1,9 +1,12 @@
-﻿using InvestNaijaAuth.Enums;
+﻿using System.ComponentModel.DataAnnotations;
+using InvestNaijaAuth.Enums;
 
 namespace InvestNaijaAuth.Entities
 {
     public class WalletTransaction
     {
+        [Key]
+        public int DBId { get; set; }
         public Guid TransactionId { get; set; }
         public Guid WalletId { get; set; }
         public Wallet Wallet { get; set; }

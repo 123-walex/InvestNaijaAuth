@@ -62,6 +62,8 @@ try
 
     builder.Services.AddAutoMapper(typeof(MappingProfile));
 
+    builder.Services.AddScoped<NGXScraperService>();
+
     builder.Services.AddScoped<ITokenService, TokenService>();
 
     builder.Services.AddScoped<AzureBlobService>();

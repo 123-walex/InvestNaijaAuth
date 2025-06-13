@@ -1,6 +1,8 @@
 ﻿namespace InvestNaijaAuth.Enums
 {
-    public class TradeType
+    public enum TradeType
     {
+        Buy , 
+        Sell
     }
 }

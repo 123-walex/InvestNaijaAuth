@@ -81,5 +81,6 @@ namespace InvestNaijaAuth.Servicies
 
             return fund;
         }
+
     }
 }

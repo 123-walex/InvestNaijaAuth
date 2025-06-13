@@ -2,7 +2,7 @@
 
 namespace InvestNaijaAuth.DTO_s
 {
-    public class FundWalletDTO
+    public class FundWalletDTO  
     {
         public Guid TransactionId { get; set; }
         public Guid WalletId { get; set; }

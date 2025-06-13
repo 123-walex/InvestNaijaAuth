@@ -29,6 +29,12 @@ try
     builder.Services.AddEndpointsApiExplorer();
     builder.Services.AddSwaggerGen();
 
+    // Add logging configuration
+    builder.Services.AddLogging(loggingBuilder =>
+    {
+        loggingBuilder.AddSerilog(dispose: true);
+    });
+
     builder.Services.AddDbContext<InvestNaijaDBContext>(options =>
         options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 

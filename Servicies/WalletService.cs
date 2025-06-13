@@ -6,6 +6,7 @@ using InvestNaijaAuth.Entities;
 using InvestNaijaAuth.Enums;
 using System.Transactions;
 using Microsoft.AspNetCore.Http.HttpResults;
+using Microsoft.Extensions.Logging;
 
 namespace InvestNaijaAuth.Servicies
 {
@@ -14,15 +15,16 @@ namespace InvestNaijaAuth.Servicies
         Task<CreateWalletDTO> CreateWalletAsync(CreateWalletDTO wallet);
         Task<GetWalletDTO> GetWalletAsync(GetWalletDTO get);
         Task<FundWalletDTO>FundWalletAsync(FundWalletDTO fund);
-
+        
+       
     }
     public class WalletService : IWalletService
     {
         private readonly InvestNaijaDBContext _context;
         private readonly IMapper _mapper;
-        private readonly ILogger _logger;
+        private readonly ILogger<WalletService> _logger;
 
-        public WalletService(InvestNaijaDBContext context, IMapper mapper , ILogger logger)
+        public WalletService(InvestNaijaDBContext context, IMapper mapper , ILogger<WalletService> logger)
         {
             _context = context;
             _mapper = mapper;
@@ -63,7 +65,7 @@ namespace InvestNaijaAuth.Servicies
 
             var transaction = new WalletTransaction
             {
-                Id = Guid.NewGuid(),
+                TransactionId = Guid.NewGuid(),
                 WalletId = fund.WalletId,
                 Amount = fund.Amount,
                 Type = TransactionType.Credit,
@@ -77,11 +79,7 @@ namespace InvestNaijaAuth.Servicies
             _context.Wallet.Update(fundwallet);
             await _context.SaveChangesAsync();
 
-            return new TransactionResultDTO
-            {
-                TransactionId = transaction.Id,
-                Balance = fundwallet.Balance
-            };
+            return fund;
         }
     }
 }

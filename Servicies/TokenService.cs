@@ -42,6 +42,7 @@ namespace InvestNaijaAuth.Servicies
                 new Claim(ClaimTypes.Name, user.Username),
                 new Claim(ClaimTypes.Email, user.EmailAddress),
                 new Claim(ClaimTypes.Role, user.Role)
+
             };
 
             var key = new SymmetricSecurityKey(

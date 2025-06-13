@@ -13,7 +13,7 @@ using InvestNaijaAuth.Servicies;
 Log.Logger = new LoggerConfiguration()
     .Enrich.FromLogContext()
     .Enrich.WithExceptionDetails()
-    .Enrich.WithEnvironmentName()
+    .Enrich.WithEnvironmentName()   
     .Enrich.WithThreadId()
     .Enrich.WithProcessId()
     .WriteTo.File("InvestNaijaLogs.txt", rollingInterval: RollingInterval.Infinite, shared: true)

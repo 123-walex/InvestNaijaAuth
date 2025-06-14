@@ -28,15 +28,31 @@ namespace InvestNaijaAuth.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<decimal>("AverageBuyPrice")
+                        .HasColumnType("decimal(18,2)");
+
                     b.Property<decimal>("AveragePrice")
                         .HasPrecision(18, 2)
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<int>("Quantity")
-                        .HasColumnType("int");
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("DateBought")
+                        .HasColumnType("datetime2");
+
+                    b.Property<decimal>("Quantity")
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<Guid>("StockId")
                         .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Symbol")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
 
                     b.Property<Guid>("UserId")
                         .HasColumnType("uniqueidentifier");
@@ -101,7 +117,7 @@ namespace InvestNaijaAuth.Migrations
                     b.Property<decimal?>("Change")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<decimal>("CurrentPrice")
+                    b.Property<decimal?>("CurrentPrice")
                         .HasPrecision(18, 2)
                         .HasColumnType("decimal(18,2)");
 
@@ -119,13 +135,13 @@ namespace InvestNaijaAuth.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<decimal>("OpeningPrice")
+                    b.Property<decimal?>("OpeningPrice")
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<decimal?>("PercChange")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<decimal>("PreviousClose")
+                    b.Property<decimal?>("PreviousClose")
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("Sector")
@@ -331,17 +347,21 @@ namespace InvestNaijaAuth.Migrations
 
             modelBuilder.Entity("InvestNaijaAuth.Entities.Portfolio", b =>
                 {
-                    b.HasOne("InvestNaijaAuth.Entities.Stock", null)
+                    b.HasOne("InvestNaijaAuth.Entities.Stock", "Stock")
                         .WithMany()
                         .HasForeignKey("StockId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("InvestNaijaAuth.Entities.User", null)
-                        .WithMany()
+                    b.HasOne("InvestNaijaAuth.Entities.User", "User")
+                        .WithMany("Portfolios")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Stock");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("InvestNaijaAuth.Entities.RefreshTokens", b =>
@@ -406,6 +426,8 @@ namespace InvestNaijaAuth.Migrations
 
             modelBuilder.Entity("InvestNaijaAuth.Entities.User", b =>
                 {
+                    b.Navigation("Portfolios");
+
                     b.Navigation("RefreshTokens");
 
                     b.Navigation("Sessions");

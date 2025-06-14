@@ -11,12 +11,12 @@ namespace User_Authapi.DTO_s
         [Required]
         [StringLength(100, MinimumLength = 6, ErrorMessage = "PassWord is required")]
         [DataType(DataType.Password)]
-        public required string Password { get; set; }
+        public required string HashedPassword { get; set; }
 
         [Required]
         [StringLength(100, MinimumLength = 6, ErrorMessage = "Password is required")]
         [DataType(DataType.EmailAddress)]
-        public required string Email { get; set; }
+        public required string EmailAddress { get; set; }
 
 
     }

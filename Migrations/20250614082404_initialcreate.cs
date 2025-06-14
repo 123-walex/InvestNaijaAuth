@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace InvestNaijaAuth.Migrations
 {
     /// <inheritdoc />
-    public partial class UpdateStockSchema : Migration
+    public partial class initialcreate : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -18,9 +18,9 @@ namespace InvestNaijaAuth.Migrations
                     StockId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Symbol = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    CurrentPrice = table.Column<decimal>(type: "decimal(18,2)", precision: 18, scale: 2, nullable: false),
-                    PreviousClose = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    OpeningPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    CurrentPrice = table.Column<decimal>(type: "decimal(18,2)", precision: 18, scale: 2, nullable: true),
+                    PreviousClose = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
+                    OpeningPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
                     HighPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
                     LowPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
                     Change = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
@@ -68,8 +68,13 @@ namespace InvestNaijaAuth.Migrations
                     PortfolioId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     UserId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     StockId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Quantity = table.Column<int>(type: "int", nullable: false),
-                    AveragePrice = table.Column<decimal>(type: "decimal(18,2)", precision: 18, scale: 2, nullable: false)
+                    Quantity = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    AverageBuyPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    AveragePrice = table.Column<decimal>(type: "decimal(18,2)", precision: 18, scale: 2, nullable: false),
+                    DateBought = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    Symbol = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {

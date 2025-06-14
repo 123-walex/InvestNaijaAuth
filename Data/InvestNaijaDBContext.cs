@@ -75,17 +75,22 @@ namespace InvestNaijaAuth.Data
             // Configure Portfolio entity
             modelBuilder.Entity<Portfolio>(entity =>
             {
-                entity.HasKey(e => e.PortfolioId);
-                entity.HasOne<User>()
-                    .WithMany()
-                    .HasForeignKey(e => e.UserId)
-                    .OnDelete(DeleteBehavior.Cascade);
-                entity.HasOne<Stock>()
-                    .WithMany()
-                    .HasForeignKey(e => e.StockId)
-                    .OnDelete(DeleteBehavior.Restrict);
-                entity.Property(e => e.AveragePrice).HasPrecision(18, 2);
+                entity.HasKey(p => p.PortfolioId);
+
+                entity.HasOne(p => p.User)
+                      .WithMany(u => u.Portfolios)
+                      .HasForeignKey(p => p.UserId)
+                      .OnDelete(DeleteBehavior.Cascade);
+
+                entity.HasOne(p => p.Stock)
+                      .WithMany()
+                      .HasForeignKey(p => p.StockId)
+                      .OnDelete(DeleteBehavior.Restrict);
+
+                entity.Property(p => p.AveragePrice)
+                      .HasPrecision(18, 2);
             });
+
 
             // Configure StockTransaction entity
             modelBuilder.Entity<StockTransaction>(entity =>

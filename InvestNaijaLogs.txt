@@ -2455,3 +2455,62 @@ WHERE [s].[Name] LIKE @__query_0_contains ESCAPE N'\' OR [s].[Sector] LIKE @__qu
 2025-06-14 01:32:08.386 +01:00 [INF] Executed endpoint 'InvestNaijaAuth.Controllers.StockController.SearchStocks (InvestNaijaAuth)'
 2025-06-14 01:32:08.405 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7292/api/Stock/SearchforStock?query=FCMB - 200 null application/json; charset=utf-8 588.7155ms
 2025-06-14 01:33:34.432 +01:00 [INF] Application is shutting down...
+2025-06-14 09:17:41.711 +01:00 [INF] User profile is available. Using 'C:\Users\Lenovo\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-06-14 09:17:42.787 +01:00 [INF] Now listening on: https://localhost:7292
+2025-06-14 09:17:42.791 +01:00 [INF] Now listening on: http://localhost:5022
+2025-06-14 09:17:43.421 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-14 09:17:43.431 +01:00 [INF] Hosting environment: Development
+2025-06-14 09:17:43.433 +01:00 [INF] Content root path: C:\Users\Lenovo\Documents\c# developement\InvestNaijaAuth
+2025-06-14 09:20:03.447 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7292/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-14 09:20:03.505 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7292/_framework/aspnetcore-browser-refresh.js - 200 13782 application/javascript; charset=utf-8 95.1551ms
+2025-06-14 09:20:03.686 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7292/swagger/v1/swagger.json - null null
+2025-06-14 09:20:03.948 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7292/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 262.0322ms
+2025-06-14 09:20:16.728 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7292/swagger/index.html - null null
+2025-06-14 09:20:17.222 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7292/swagger/index.html - 200 null text/html;charset=utf-8 494.7241ms
+2025-06-14 09:20:17.309 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7292/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-14 09:20:17.310 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7292/_vs/browserLink - null null
+2025-06-14 09:20:17.322 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7292/_framework/aspnetcore-browser-refresh.js - 200 13782 application/javascript; charset=utf-8 13.4481ms
+2025-06-14 09:20:17.532 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7292/_vs/browserLink - 200 null text/javascript; charset=UTF-8 222.6668ms
+2025-06-14 09:20:17.651 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7292/swagger/v1/swagger.json - null null
+2025-06-14 09:20:17.900 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7292/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 249.1915ms
+2025-06-14 09:21:15.894 +01:00 [INF] Application is shutting down...
+2025-06-14 09:22:18.001 +01:00 [FTL] Application start-up failed
+Microsoft.Extensions.Hosting.HostAbortedException: The host was aborted.
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.ThrowHostAborted()
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.OnNext(KeyValuePair`2 value)
+   at System.Diagnostics.DiagnosticListener.Write(String name, Object value)
+   at System.Diagnostics.DiagnosticSource.Write[T](String name, T value)
+   at Microsoft.Extensions.Hosting.HostBuilder.ResolveHost(IServiceProvider serviceProvider, DiagnosticListener diagnosticListener)
+   at Microsoft.Extensions.Hosting.HostApplicationBuilder.Build()
+   at Microsoft.AspNetCore.Builder.WebApplicationBuilder.Build()
+   at Program.<Main>$(String[] args) in C:\Users\Lenovo\Documents\c# developement\InvestNaijaAuth\Program.cs:line 77
+2025-06-14 09:22:37.887 +01:00 [FTL] Application start-up failed
+Microsoft.Extensions.Hosting.HostAbortedException: The host was aborted.
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.ThrowHostAborted()
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.OnNext(KeyValuePair`2 value)
+   at System.Diagnostics.DiagnosticListener.Write(String name, Object value)
+   at System.Diagnostics.DiagnosticSource.Write[T](String name, T value)
+   at Microsoft.Extensions.Hosting.HostBuilder.ResolveHost(IServiceProvider serviceProvider, DiagnosticListener diagnosticListener)
+   at Microsoft.Extensions.Hosting.HostApplicationBuilder.Build()
+   at Microsoft.AspNetCore.Builder.WebApplicationBuilder.Build()
+   at Program.<Main>$(String[] args) in C:\Users\Lenovo\Documents\c# developement\InvestNaijaAuth\Program.cs:line 77
+2025-06-14 09:24:00.630 +01:00 [FTL] Application start-up failed
+Microsoft.Extensions.Hosting.HostAbortedException: The host was aborted.
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.ThrowHostAborted()
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.OnNext(KeyValuePair`2 value)
+   at System.Diagnostics.DiagnosticListener.Write(String name, Object value)
+   at System.Diagnostics.DiagnosticSource.Write[T](String name, T value)
+   at Microsoft.Extensions.Hosting.HostBuilder.ResolveHost(IServiceProvider serviceProvider, DiagnosticListener diagnosticListener)
+   at Microsoft.Extensions.Hosting.HostApplicationBuilder.Build()
+   at Microsoft.AspNetCore.Builder.WebApplicationBuilder.Build()
+   at Program.<Main>$(String[] args) in C:\Users\Lenovo\Documents\c# developement\InvestNaijaAuth\Program.cs:line 77
+2025-06-14 09:24:55.013 +01:00 [FTL] Application start-up failed
+Microsoft.Extensions.Hosting.HostAbortedException: The host was aborted.
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.ThrowHostAborted()
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.OnNext(KeyValuePair`2 value)
+   at System.Diagnostics.DiagnosticListener.Write(String name, Object value)
+   at System.Diagnostics.DiagnosticSource.Write[T](String name, T value)
+   at Microsoft.Extensions.Hosting.HostBuilder.ResolveHost(IServiceProvider serviceProvider, DiagnosticListener diagnosticListener)
+   at Microsoft.Extensions.Hosting.HostApplicationBuilder.Build()
+   at Microsoft.AspNetCore.Builder.WebApplicationBuilder.Build()
+   at Program.<Main>$(String[] args) in C:\Users\Lenovo\Documents\c# developement\InvestNaijaAuth\Program.cs:line 77

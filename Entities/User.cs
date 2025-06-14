@@ -24,6 +24,7 @@ namespace InvestNaijaAuth.Entities
         public bool IsDeleted { get; set; } = false;
         public ICollection<UserSessions> Sessions { get; set; } = new List<UserSessions>();
         public ICollection<RefreshTokens> RefreshTokens { get; set; } = new List<RefreshTokens>();
+        public ICollection<Portfolio> Portfolios { get; set; } = new List<Portfolio>();
         public int NoOfSessions { get; set; }
 
         [Precision(18, 2)]

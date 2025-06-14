@@ -25,5 +25,6 @@ namespace InvestNaijaAuth.DTO_s
         [StringLength(100, MinimumLength = 6, ErrorMessage = "Email is required")]
         public required string EmailAddress { get; set; }
 
+        public string Role { get; set; }
     }
 }

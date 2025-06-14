@@ -37,7 +37,7 @@ namespace InvestNaijaAuth.Controllers
             _tokenservice = tokenService;
 
         }
-        [Authorize(Roles = "Admin,User")]
+        [AllowAnonymous]
         [HttpPost("Signup")]
         public async Task<IActionResult> Signup(SignupDTO signup)
         {
@@ -81,6 +81,8 @@ namespace InvestNaijaAuth.Controllers
                 _context.User.Add(SignUpEntity);
                 await _context.SaveChangesAsync();
 
+                signup.Role ??= "User";
+
                 var SignUpresponse = new HashExclusionDTO
                 {
                     Id = SignUpEntity.Id,
@@ -98,7 +100,7 @@ namespace InvestNaijaAuth.Controllers
             }
 
         }
-        [Authorize(Roles = "Admin,User")]
+        [AllowAnonymous]
         [HttpPost("login")]
         public async Task<IActionResult> Login(LoginDTO login)
         {

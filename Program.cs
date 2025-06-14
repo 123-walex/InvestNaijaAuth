@@ -10,6 +10,7 @@ using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using InvestNaijaAuth.Servicies;
 using InvestNaijaAuth.Services;
+using Microsoft.OpenApi.Models;
 
 Log.Logger = new LoggerConfiguration()
     .Enrich.FromLogContext()
@@ -62,6 +63,37 @@ try
     builder.Host.UseSerilog();
 
     builder.Services.AddAutoMapper(typeof(MappingProfile));
+
+    builder.Services.AddSwaggerGen(c =>
+    {
+        c.SwaggerDoc("v1", new OpenApiInfo { Title = "Your API", Version = "v1" });
+
+        // Add this block to enable JWT auth in Swagger
+        c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+        {
+            Name = "Authorization",
+            Type = SecuritySchemeType.ApiKey,
+            Scheme = "Bearer",
+            BearerFormat = "JWT",
+            In = ParameterLocation.Header,
+            Description = "Enter 'Bearer' followed by your JWT token in the text box below.\r\n\r\nExample: \"Bearer abcde12345\"",
+        });
+
+        c.AddSecurityRequirement(new OpenApiSecurityRequirement
+    {
+        {
+            new OpenApiSecurityScheme
+            {
+                Reference = new OpenApiReference
+                {
+                    Type = ReferenceType.SecurityScheme,
+                    Id = "Bearer"
+                }
+            },
+            Array.Empty<string>()
+        }
+    });
+    });
 
     builder.Services.AddHttpClient<NGXScraperService>();
 

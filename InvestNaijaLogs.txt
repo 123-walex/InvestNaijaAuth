@@ -2514,3 +2514,364 @@ Microsoft.Extensions.Hosting.HostAbortedException: The host was aborted.
    at Microsoft.Extensions.Hosting.HostApplicationBuilder.Build()
    at Microsoft.AspNetCore.Builder.WebApplicationBuilder.Build()
    at Program.<Main>$(String[] args) in C:\Users\Lenovo\Documents\c# developement\InvestNaijaAuth\Program.cs:line 77
+2025-06-14 10:32:20.920 +01:00 [INF] User profile is available. Using 'C:\Users\Lenovo\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-06-14 10:32:21.844 +01:00 [INF] Now listening on: https://localhost:7292
+2025-06-14 10:32:21.852 +01:00 [INF] Now listening on: http://localhost:5022
+2025-06-14 10:32:22.595 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-14 10:32:22.664 +01:00 [INF] Hosting environment: Development
+2025-06-14 10:32:22.680 +01:00 [INF] Content root path: C:\Users\Lenovo\Documents\c# developement\InvestNaijaAuth
+2025-06-14 10:32:39.735 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7292/swagger/index.html - null null
+2025-06-14 10:32:41.689 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7292/swagger/index.html - 200 null text/html;charset=utf-8 1981.4264ms
+2025-06-14 10:32:42.190 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7292/_vs/browserLink - null null
+2025-06-14 10:32:42.191 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7292/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-14 10:32:42.559 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7292/_framework/aspnetcore-browser-refresh.js - 200 13782 application/javascript; charset=utf-8 372.7617ms
+2025-06-14 10:32:42.762 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7292/_vs/browserLink - 200 null text/javascript; charset=UTF-8 572.2239ms
+2025-06-14 10:32:42.988 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7292/swagger/v1/swagger.json - null null
+2025-06-14 10:32:43.297 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7292/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 300.752ms
+2025-06-14 10:44:20.412 +01:00 [INF] Application is shutting down...
+2025-06-14 10:46:08.222 +01:00 [INF] User profile is available. Using 'C:\Users\Lenovo\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-06-14 10:46:09.240 +01:00 [INF] Now listening on: https://localhost:7292
+2025-06-14 10:46:09.247 +01:00 [INF] Now listening on: http://localhost:5022
+2025-06-14 10:46:09.780 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-14 10:46:09.788 +01:00 [INF] Hosting environment: Development
+2025-06-14 10:46:09.860 +01:00 [INF] Content root path: C:\Users\Lenovo\Documents\c# developement\InvestNaijaAuth
+2025-06-14 10:52:04.187 +01:00 [INF] Request starting HTTP/2 POST https://localhost:7292/api/InvestNaijaAuth/Signup - application/json 102
+2025-06-14 10:52:04.618 +01:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin|User)
+2025-06-14 10:52:04.637 +01:00 [INF] AuthenticationScheme: Bearer was challenged.
+2025-06-14 10:52:04.655 +01:00 [INF] Request finished HTTP/2 POST https://localhost:7292/api/InvestNaijaAuth/Signup - 401 0 null 487.3331ms
+2025-06-14 10:53:09.027 +01:00 [INF] Request starting HTTP/2 POST https://localhost:7292/api/InvestNaijaAuth/Signup - application/json 102
+2025-06-14 10:53:09.044 +01:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin|User)
+2025-06-14 10:53:09.047 +01:00 [INF] AuthenticationScheme: Bearer was challenged.
+2025-06-14 10:53:09.055 +01:00 [INF] Request finished HTTP/2 POST https://localhost:7292/api/InvestNaijaAuth/Signup - 401 0 null 28.0555ms
+2025-06-14 10:54:14.560 +01:00 [INF] Application is shutting down...
+2025-06-14 10:54:52.837 +01:00 [INF] User profile is available. Using 'C:\Users\Lenovo\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-06-14 10:54:53.680 +01:00 [INF] Now listening on: https://localhost:7292
+2025-06-14 10:54:53.684 +01:00 [INF] Now listening on: http://localhost:5022
+2025-06-14 10:54:54.695 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-14 10:54:54.910 +01:00 [INF] Hosting environment: Development
+2025-06-14 10:54:54.926 +01:00 [INF] Content root path: C:\Users\Lenovo\Documents\c# developement\InvestNaijaAuth
+2025-06-14 10:55:33.805 +01:00 [INF] Request starting HTTP/2 POST https://localhost:7292/api/InvestNaijaAuth/Signup - application/json 102
+2025-06-14 10:55:34.241 +01:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin|User)
+2025-06-14 10:55:34.257 +01:00 [INF] AuthenticationScheme: Bearer was challenged.
+2025-06-14 10:55:34.269 +01:00 [INF] Request finished HTTP/2 POST https://localhost:7292/api/InvestNaijaAuth/Signup - 401 0 null 488.4738ms
+2025-06-14 10:55:39.465 +01:00 [INF] Request starting HTTP/2 POST https://localhost:7292/api/InvestNaijaAuth/Signup - application/json 102
+2025-06-14 10:55:39.484 +01:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin|User)
+2025-06-14 10:55:39.488 +01:00 [INF] AuthenticationScheme: Bearer was challenged.
+2025-06-14 10:55:39.493 +01:00 [INF] Request finished HTTP/2 POST https://localhost:7292/api/InvestNaijaAuth/Signup - 401 0 null 29.1027ms
+2025-06-14 10:56:34.150 +01:00 [INF] Application is shutting down...
+2025-06-14 11:00:16.565 +01:00 [INF] User profile is available. Using 'C:\Users\Lenovo\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-06-14 11:00:17.523 +01:00 [INF] Now listening on: https://localhost:7292
+2025-06-14 11:00:17.530 +01:00 [INF] Now listening on: http://localhost:5022
+2025-06-14 11:00:17.917 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-14 11:00:17.926 +01:00 [INF] Hosting environment: Development
+2025-06-14 11:00:17.930 +01:00 [INF] Content root path: C:\Users\Lenovo\Documents\c# developement\InvestNaijaAuth
+2025-06-14 11:00:24.900 +01:00 [INF] Request starting HTTP/2 POST https://localhost:7292/api/InvestNaijaAuth/Signup - application/json 102
+2025-06-14 11:00:25.257 +01:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2025-06-14 11:00:25.276 +01:00 [INF] AuthenticationScheme: Bearer was challenged.
+2025-06-14 11:00:25.289 +01:00 [INF] Request finished HTTP/2 POST https://localhost:7292/api/InvestNaijaAuth/Signup - 401 0 null 408.3341ms
+2025-06-14 11:00:41.166 +01:00 [INF] Application is shutting down...
+2025-06-14 11:01:59.300 +01:00 [INF] User profile is available. Using 'C:\Users\Lenovo\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-06-14 11:02:00.352 +01:00 [INF] Now listening on: https://localhost:7292
+2025-06-14 11:02:00.369 +01:00 [INF] Now listening on: http://localhost:5022
+2025-06-14 11:02:01.206 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-14 11:02:01.377 +01:00 [INF] Hosting environment: Development
+2025-06-14 11:02:01.379 +01:00 [INF] Content root path: C:\Users\Lenovo\Documents\c# developement\InvestNaijaAuth
+2025-06-14 11:02:22.729 +01:00 [INF] Request starting HTTP/2 POST https://localhost:7292/api/InvestNaijaAuth/Signup - application/json 102
+2025-06-14 11:02:23.164 +01:00 [INF] Executing endpoint 'InvestNaijaAuth.Controllers.InvestNaijaAuthController.Signup (InvestNaijaAuth)'
+2025-06-14 11:02:23.247 +01:00 [INF] Route matched with {action = "Signup", controller = "InvestNaijaAuth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Signup(InvestNaijaAuth.DTO_s.SignupDTO) on controller InvestNaijaAuth.Controllers.InvestNaijaAuthController (InvestNaijaAuth).
+2025-06-14 11:02:24.114 +01:00 [INF] Received SignUpUser request. TraceId: 0HNDB5A782L76:00000001, RequestedBy: Anonymous, Payload: {"Username":"Wale Fagbemi","HashedPassword":"walex_123","EmailAddress":"walex@gmail.com","$type":"SignupDTO"}
+2025-06-14 11:02:26.714 +01:00 [WRN] No store type was specified for the decimal property 'AverageBuyPrice' on entity type 'Portfolio'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-14 11:02:26.719 +01:00 [WRN] No store type was specified for the decimal property 'Quantity' on entity type 'Portfolio'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-14 11:02:26.723 +01:00 [WRN] No store type was specified for the decimal property 'CalculateChangePercent' on entity type 'Stock'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-14 11:02:26.726 +01:00 [WRN] No store type was specified for the decimal property 'Change' on entity type 'Stock'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-14 11:02:26.731 +01:00 [WRN] No store type was specified for the decimal property 'HighPrice' on entity type 'Stock'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-14 11:02:26.735 +01:00 [WRN] No store type was specified for the decimal property 'LowPrice' on entity type 'Stock'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-14 11:02:26.739 +01:00 [WRN] No store type was specified for the decimal property 'OpeningPrice' on entity type 'Stock'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-14 11:02:26.743 +01:00 [WRN] No store type was specified for the decimal property 'PercChange' on entity type 'Stock'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-14 11:02:26.748 +01:00 [WRN] No store type was specified for the decimal property 'PreviousClose' on entity type 'Stock'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-14 11:02:26.752 +01:00 [WRN] No store type was specified for the decimal property 'Value' on entity type 'Stock'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-14 11:02:26.756 +01:00 [WRN] No store type was specified for the decimal property 'Volume' on entity type 'Stock'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-14 11:02:26.759 +01:00 [WRN] No store type was specified for the decimal property 'Balance' on entity type 'Wallet'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-14 11:02:26.766 +01:00 [WRN] No store type was specified for the decimal property 'Amount' on entity type 'WalletTransaction'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-14 11:02:29.806 +01:00 [INF] Executed DbCommand (292ms) [Parameters=[@__signup_Username_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [User] AS [u]
+        WHERE [u].[Username] = @__signup_Username_0) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-06-14 11:02:29.936 +01:00 [INF] Executed DbCommand (12ms) [Parameters=[@__signup_EmailAddress_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [User] AS [u]
+        WHERE [u].[EmailAddress] = @__signup_EmailAddress_0) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-06-14 11:02:29.982 +01:00 [INF] Executed DbCommand (24ms) [Parameters=[@__signup_HashedPassword_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [User] AS [u]
+        WHERE [u].[HashedPassword] = @__signup_HashedPassword_0) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-06-14 11:02:30.786 +01:00 [ERR] Failed executing DbCommand (77ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = DateTime2), @p2='?' (DbType = DateTime2), @p3='?' (Size = 256), @p4='?' (Size = 256), @p5='?' (DbType = Boolean), @p6='?' (DbType = Int32), @p7='?' (DbType = DateTime2), @p8='?' (Size = 4000), @p9='?' (DbType = DateTime2), @p10='?' (Size = 4000), @p11='?' (Precision = 18) (Scale = 2) (DbType = Decimal)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [User] ([Id], [CreatedAt], [DeletedAt], [EmailAddress], [HashedPassword], [IsDeleted], [NoOfSessions], [RestoredAt], [Role], [UpdatedAt], [Username], [WalletBalance])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11);
+2025-06-14 11:02:31.003 +01:00 [ERR] An exception occurred in the database while saving changes for context type 'InvestNaijaAuth.Data.InvestNaijaDBContext'.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Cannot insert the value NULL into column 'Role', table 'InvestNaijaDB.dbo.User'; column does not allow nulls. INSERT fails.
+The statement has been terminated.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+ClientConnectionId:50f605e2-20fc-4bbc-b618-c594cb37c89f
+Error Number:515,State:2,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Update.Internal.SqlServerModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalDatabase.SaveChangesAsync(IList`1 entries, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Cannot insert the value NULL into column 'Role', table 'InvestNaijaDB.dbo.User'; column does not allow nulls. INSERT fails.
+The statement has been terminated.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+ClientConnectionId:50f605e2-20fc-4bbc-b618-c594cb37c89f
+Error Number:515,State:2,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Update.Internal.SqlServerModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalDatabase.SaveChangesAsync(IList`1 entries, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+2025-06-14 11:02:33.295 +01:00 [ERR] Error occurred during signup. TraceId: 0HNDB5A782L76:00000001, RequestedBy: Anonymous
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Cannot insert the value NULL into column 'Role', table 'InvestNaijaDB.dbo.User'; column does not allow nulls. INSERT fails.
+The statement has been terminated.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+ClientConnectionId:50f605e2-20fc-4bbc-b618-c594cb37c89f
+Error Number:515,State:2,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Update.Internal.SqlServerModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalDatabase.SaveChangesAsync(IList`1 entries, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at InvestNaijaAuth.Controllers.InvestNaijaAuthController.Signup(SignupDTO signup) in C:\Users\Lenovo\Documents\c# developement\InvestNaijaAuth\Controllers\InvestNaijaAuthController.cs:line 82
+2025-06-14 11:02:34.795 +01:00 [INF] Executing ObjectResult, writing value of type 'System.String'.
+2025-06-14 11:02:34.895 +01:00 [INF] Executed action InvestNaijaAuth.Controllers.InvestNaijaAuthController.Signup (InvestNaijaAuth) in 11623.85ms
+2025-06-14 11:02:34.907 +01:00 [INF] Executed endpoint 'InvestNaijaAuth.Controllers.InvestNaijaAuthController.Signup (InvestNaijaAuth)'
+2025-06-14 11:02:34.949 +01:00 [INF] Request finished HTTP/2 POST https://localhost:7292/api/InvestNaijaAuth/Signup - 500 null text/plain; charset=utf-8 12240.3612ms
+2025-06-14 11:05:00.402 +01:00 [INF] Application is shutting down...
+2025-06-14 11:06:21.725 +01:00 [INF] User profile is available. Using 'C:\Users\Lenovo\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-06-14 11:06:22.722 +01:00 [INF] Now listening on: https://localhost:7292
+2025-06-14 11:06:22.727 +01:00 [INF] Now listening on: http://localhost:5022
+2025-06-14 11:06:23.075 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-14 11:06:23.094 +01:00 [INF] Hosting environment: Development
+2025-06-14 11:06:23.107 +01:00 [INF] Content root path: C:\Users\Lenovo\Documents\c# developement\InvestNaijaAuth
+2025-06-14 11:06:47.063 +01:00 [INF] Request starting HTTP/2 POST https://localhost:7292/api/InvestNaijaAuth/Signup - application/json 102
+2025-06-14 11:06:47.425 +01:00 [INF] Executing endpoint 'InvestNaijaAuth.Controllers.InvestNaijaAuthController.Signup (InvestNaijaAuth)'
+2025-06-14 11:06:47.482 +01:00 [INF] Route matched with {action = "Signup", controller = "InvestNaijaAuth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Signup(InvestNaijaAuth.DTO_s.SignupDTO) on controller InvestNaijaAuth.Controllers.InvestNaijaAuthController (InvestNaijaAuth).
+2025-06-14 11:06:48.752 +01:00 [INF] Executing BadRequestObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ValidationProblemDetails'.
+2025-06-14 11:06:48.830 +01:00 [INF] Executed action InvestNaijaAuth.Controllers.InvestNaijaAuthController.Signup (InvestNaijaAuth) in 1331.9001ms
+2025-06-14 11:06:48.835 +01:00 [INF] Executed endpoint 'InvestNaijaAuth.Controllers.InvestNaijaAuthController.Signup (InvestNaijaAuth)'
+2025-06-14 11:06:48.849 +01:00 [INF] Request finished HTTP/2 POST https://localhost:7292/api/InvestNaijaAuth/Signup - 400 null application/problem+json; charset=utf-8 1802.9883ms
+2025-06-14 11:07:00.046 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7292/swagger/index.html - null null
+2025-06-14 11:07:00.566 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7292/swagger/index.html - 200 null text/html;charset=utf-8 520.288ms
+2025-06-14 11:07:00.936 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7292/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-14 11:07:00.984 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7292/_vs/browserLink - null null
+2025-06-14 11:07:01.143 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7292/_framework/aspnetcore-browser-refresh.js - 200 13782 application/javascript; charset=utf-8 206.9184ms
+2025-06-14 11:07:01.434 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7292/_vs/browserLink - 200 null text/javascript; charset=UTF-8 450.7251ms
+2025-06-14 11:07:01.635 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7292/swagger/v1/swagger.json - null null
+2025-06-14 11:07:01.960 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7292/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 325.4265ms
+2025-06-14 11:07:54.478 +01:00 [INF] Request starting HTTP/2 POST https://localhost:7292/api/InvestNaijaAuth/Signup - application/json 123
+2025-06-14 11:07:54.524 +01:00 [INF] Executing endpoint 'InvestNaijaAuth.Controllers.InvestNaijaAuthController.Signup (InvestNaijaAuth)'
+2025-06-14 11:07:54.528 +01:00 [INF] Route matched with {action = "Signup", controller = "InvestNaijaAuth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Signup(InvestNaijaAuth.DTO_s.SignupDTO) on controller InvestNaijaAuth.Controllers.InvestNaijaAuthController (InvestNaijaAuth).
+2025-06-14 11:07:54.563 +01:00 [INF] Received SignUpUser request. TraceId: 0HNDB5CM13EJ2:00000001, RequestedBy: Anonymous, Payload: {"Username":"wale fagbemi","HashedPassword":"walex_123","EmailAddress":"wale@gmail.com.com","Role":"User","$type":"SignupDTO"}
+2025-06-14 11:07:56.454 +01:00 [WRN] No store type was specified for the decimal property 'AverageBuyPrice' on entity type 'Portfolio'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-14 11:07:56.470 +01:00 [WRN] No store type was specified for the decimal property 'Quantity' on entity type 'Portfolio'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-14 11:07:56.478 +01:00 [WRN] No store type was specified for the decimal property 'CalculateChangePercent' on entity type 'Stock'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-14 11:07:56.482 +01:00 [WRN] No store type was specified for the decimal property 'Change' on entity type 'Stock'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-14 11:07:56.486 +01:00 [WRN] No store type was specified for the decimal property 'HighPrice' on entity type 'Stock'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-14 11:07:56.495 +01:00 [WRN] No store type was specified for the decimal property 'LowPrice' on entity type 'Stock'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-14 11:07:56.499 +01:00 [WRN] No store type was specified for the decimal property 'OpeningPrice' on entity type 'Stock'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-14 11:07:56.503 +01:00 [WRN] No store type was specified for the decimal property 'PercChange' on entity type 'Stock'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-14 11:07:56.511 +01:00 [WRN] No store type was specified for the decimal property 'PreviousClose' on entity type 'Stock'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-14 11:07:56.517 +01:00 [WRN] No store type was specified for the decimal property 'Value' on entity type 'Stock'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-14 11:07:56.521 +01:00 [WRN] No store type was specified for the decimal property 'Volume' on entity type 'Stock'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-14 11:07:56.527 +01:00 [WRN] No store type was specified for the decimal property 'Balance' on entity type 'Wallet'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-14 11:07:56.532 +01:00 [WRN] No store type was specified for the decimal property 'Amount' on entity type 'WalletTransaction'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-14 11:07:58.909 +01:00 [INF] Executed DbCommand (216ms) [Parameters=[@__signup_Username_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [User] AS [u]
+        WHERE [u].[Username] = @__signup_Username_0) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-06-14 11:07:59.043 +01:00 [INF] Executed DbCommand (14ms) [Parameters=[@__signup_EmailAddress_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [User] AS [u]
+        WHERE [u].[EmailAddress] = @__signup_EmailAddress_0) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-06-14 11:07:59.076 +01:00 [INF] Executed DbCommand (8ms) [Parameters=[@__signup_HashedPassword_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [User] AS [u]
+        WHERE [u].[HashedPassword] = @__signup_HashedPassword_0) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-06-14 11:07:59.847 +01:00 [INF] Executed DbCommand (41ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = DateTime2), @p2='?' (DbType = DateTime2), @p3='?' (Size = 256), @p4='?' (Size = 256), @p5='?' (DbType = Boolean), @p6='?' (DbType = Int32), @p7='?' (DbType = DateTime2), @p8='?' (Size = 4000), @p9='?' (DbType = DateTime2), @p10='?' (Size = 4000), @p11='?' (Precision = 18) (Scale = 2) (DbType = Decimal)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [User] ([Id], [CreatedAt], [DeletedAt], [EmailAddress], [HashedPassword], [IsDeleted], [NoOfSessions], [RestoredAt], [Role], [UpdatedAt], [Username], [WalletBalance])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11);
+2025-06-14 11:07:59.887 +01:00 [INF] User Successfully Created . TraceId : 0HNDB5CM13EJ2:00000001 , RequestedBy : Anonymous , Payload : {"Username":"wale fagbemi","HashedPassword":"walex_123","EmailAddress":"wale@gmail.com.com","Role":"User","$type":"SignupDTO"} , Username : wale fagbemi , Id : "ad0081fc-be28-4c66-b359-412d67106c93" 
+2025-06-14 11:07:59.950 +01:00 [INF] Executing CreatedAtActionResult, writing value of type 'InvestNaijaAuth.DTO_s.HashExclusionDTO'.
+2025-06-14 11:08:00.035 +01:00 [INF] Executed action InvestNaijaAuth.Controllers.InvestNaijaAuthController.Signup (InvestNaijaAuth) in 5499.3101ms
+2025-06-14 11:08:00.043 +01:00 [INF] Executed endpoint 'InvestNaijaAuth.Controllers.InvestNaijaAuthController.Signup (InvestNaijaAuth)'
+2025-06-14 11:08:00.061 +01:00 [INF] Request finished HTTP/2 POST https://localhost:7292/api/InvestNaijaAuth/Signup - 201 null application/json; charset=utf-8 5582.7784ms
+2025-06-14 11:09:50.236 +01:00 [INF] Application is shutting down...
+2025-06-14 11:27:15.453 +01:00 [INF] User profile is available. Using 'C:\Users\Lenovo\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-06-14 11:27:16.914 +01:00 [INF] Now listening on: https://localhost:7292
+2025-06-14 11:27:16.945 +01:00 [INF] Now listening on: http://localhost:5022
+2025-06-14 11:27:17.991 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-14 11:27:18.323 +01:00 [INF] Hosting environment: Development
+2025-06-14 11:27:18.330 +01:00 [INF] Content root path: C:\Users\Lenovo\Documents\c# developement\InvestNaijaAuth
+2025-06-14 11:33:19.770 +01:00 [INF] Request starting HTTP/2 POST https://localhost:7292/api/InvestNaijaAuth/login - application/json 70
+2025-06-14 11:33:20.685 +01:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin|User)
+2025-06-14 11:33:21.601 +01:00 [INF] AuthenticationScheme: Bearer was challenged.
+2025-06-14 11:33:21.668 +01:00 [INF] Request finished HTTP/2 POST https://localhost:7292/api/InvestNaijaAuth/login - 401 0 null 1920.3405ms
+2025-06-14 11:34:28.581 +01:00 [INF] Application is shutting down...
+2025-06-14 11:35:26.732 +01:00 [INF] User profile is available. Using 'C:\Users\Lenovo\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-06-14 11:35:27.905 +01:00 [INF] Now listening on: https://localhost:7292
+2025-06-14 11:35:27.927 +01:00 [INF] Now listening on: http://localhost:5022
+2025-06-14 11:35:28.833 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-14 11:35:29.299 +01:00 [INF] Hosting environment: Development
+2025-06-14 11:35:29.564 +01:00 [INF] Content root path: C:\Users\Lenovo\Documents\c# developement\InvestNaijaAuth
+2025-06-14 11:35:53.067 +01:00 [INF] Request starting HTTP/2 POST https://localhost:7292/api/InvestNaijaAuth/login - application/json 70
+2025-06-14 11:35:53.378 +01:00 [INF] Executing endpoint 'InvestNaijaAuth.Controllers.InvestNaijaAuthController.Login (InvestNaijaAuth)'
+2025-06-14 11:35:53.454 +01:00 [INF] Route matched with {action = "Login", controller = "InvestNaijaAuth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(InvestNaijaAuth.DTO_s.LoginDTO) on controller InvestNaijaAuth.Controllers.InvestNaijaAuthController (InvestNaijaAuth).
+2025-06-14 11:35:54.410 +01:00 [INF] Received User Login request. TraceId: 0HNDB5SUCBQNB:00000001, RequestedBy: wale@gmail.com, Payload: {"EmailAddress":"wale@gmail.com","HashedPassword":"walex_123","$type":"LoginDTO"}
+2025-06-14 11:35:57.401 +01:00 [WRN] No store type was specified for the decimal property 'AverageBuyPrice' on entity type 'Portfolio'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-14 11:35:57.406 +01:00 [WRN] No store type was specified for the decimal property 'Quantity' on entity type 'Portfolio'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-14 11:35:57.411 +01:00 [WRN] No store type was specified for the decimal property 'CalculateChangePercent' on entity type 'Stock'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-14 11:35:57.420 +01:00 [WRN] No store type was specified for the decimal property 'Change' on entity type 'Stock'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-14 11:35:57.425 +01:00 [WRN] No store type was specified for the decimal property 'HighPrice' on entity type 'Stock'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-14 11:35:57.430 +01:00 [WRN] No store type was specified for the decimal property 'LowPrice' on entity type 'Stock'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-14 11:35:57.439 +01:00 [WRN] No store type was specified for the decimal property 'OpeningPrice' on entity type 'Stock'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-14 11:35:57.443 +01:00 [WRN] No store type was specified for the decimal property 'PercChange' on entity type 'Stock'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-14 11:35:57.451 +01:00 [WRN] No store type was specified for the decimal property 'PreviousClose' on entity type 'Stock'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-14 11:35:57.458 +01:00 [WRN] No store type was specified for the decimal property 'Value' on entity type 'Stock'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-14 11:35:57.463 +01:00 [WRN] No store type was specified for the decimal property 'Volume' on entity type 'Stock'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-14 11:35:57.470 +01:00 [WRN] No store type was specified for the decimal property 'Balance' on entity type 'Wallet'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-14 11:35:57.474 +01:00 [WRN] No store type was specified for the decimal property 'Amount' on entity type 'WalletTransaction'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-14 11:36:00.276 +01:00 [INF] Executed DbCommand (261ms) [Parameters=[@__login_EmailAddress_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[CreatedAt], [u].[DeletedAt], [u].[EmailAddress], [u].[HashedPassword], [u].[IsDeleted], [u].[NoOfSessions], [u].[RestoredAt], [u].[Role], [u].[UpdatedAt], [u].[Username], [u].[WalletBalance]
+FROM [User] AS [u]
+WHERE [u].[EmailAddress] = @__login_EmailAddress_0 AND [u].[IsDeleted] = CAST(0 AS bit)
+2025-06-14 11:36:00.345 +01:00 [ERR] User doesn't Exist on the Database , TraceId : 0HNDB5SUCBQNB:00000001 , RequestedBy : wale@gmail.com , Payload : {"EmailAddress":"wale@gmail.com","HashedPassword":"walex_123","$type":"LoginDTO"} 
+2025-06-14 11:36:00.395 +01:00 [INF] Executing UnauthorizedObjectResult, writing value of type 'System.String'.
+2025-06-14 11:36:00.415 +01:00 [INF] Executed action InvestNaijaAuth.Controllers.InvestNaijaAuthController.Login (InvestNaijaAuth) in 6944.8696ms
+2025-06-14 11:36:00.421 +01:00 [INF] Executed endpoint 'InvestNaijaAuth.Controllers.InvestNaijaAuthController.Login (InvestNaijaAuth)'
+2025-06-14 11:36:00.470 +01:00 [INF] Request finished HTTP/2 POST https://localhost:7292/api/InvestNaijaAuth/login - 401 null text/plain; charset=utf-8 7421.0364ms
+2025-06-14 11:38:05.826 +01:00 [INF] Request starting HTTP/2 POST https://localhost:7292/api/InvestNaijaAuth/login - application/json 74
+2025-06-14 11:38:05.873 +01:00 [INF] Executing endpoint 'InvestNaijaAuth.Controllers.InvestNaijaAuthController.Login (InvestNaijaAuth)'
+2025-06-14 11:38:05.901 +01:00 [INF] Route matched with {action = "Login", controller = "InvestNaijaAuth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(InvestNaijaAuth.DTO_s.LoginDTO) on controller InvestNaijaAuth.Controllers.InvestNaijaAuthController (InvestNaijaAuth).
+2025-06-14 11:38:05.911 +01:00 [INF] Received User Login request. TraceId: 0HNDB5SUCBQNC:00000001, RequestedBy: wale@gmail.com.com, Payload: {"EmailAddress":"wale@gmail.com.com","HashedPassword":"walex_123","$type":"LoginDTO"}
+2025-06-14 11:38:06.002 +01:00 [INF] Executed DbCommand (21ms) [Parameters=[@__login_EmailAddress_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[CreatedAt], [u].[DeletedAt], [u].[EmailAddress], [u].[HashedPassword], [u].[IsDeleted], [u].[NoOfSessions], [u].[RestoredAt], [u].[Role], [u].[UpdatedAt], [u].[Username], [u].[WalletBalance]
+FROM [User] AS [u]
+WHERE [u].[EmailAddress] = @__login_EmailAddress_0 AND [u].[IsDeleted] = CAST(0 AS bit)
+2025-06-14 11:38:06.261 +01:00 [INF] User Exists on the Database, TraceId : 0HNDB5SUCBQNC:00000001 , RequestedBy wale fagbemi ,
+2025-06-14 11:38:06.267 +01:00 [INF] Credentials Successfully Verified , TraceId : 0HNDB5SUCBQNC:00000001 , RequestedBy : wale fagbemi , Payload : InvestNaijaAuth.DTO_s.LoginDTO 
+2025-06-14 11:38:06.446 +01:00 [INF] Executed DbCommand (53ms) [Parameters=[@__login_EmailAddress_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[AccessSessionToken], [u].[EmailAddress], [u].[LoggedInAt], [u].[LoggedOutAt], [u].[RefreshSessionToken]
+FROM [UserSessions] AS [u]
+WHERE [u].[EmailAddress] = @__login_EmailAddress_0
+2025-06-14 11:38:07.183 +01:00 [INF] Executed DbCommand (104ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = DateTime2), @p2='?' (Size = 4000), @p3='?' (DbType = DateTime2), @p4='?' (Size = 4000), @p5='?' (Size = 4000), @p6='?' (DbType = DateTime2), @p7='?' (Size = 4000), @p8='?' (DbType = Guid), @p9='?' (DbType = Guid), @p10='?' (Size = 4000), @p11='?' (Size = 256), @p12='?' (DbType = DateTime2), @p13='?' (DbType = DateTime2), @p14='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [RefreshTokens] ([Id], [Created], [CreatedByIp], [ExpiresAt], [RefreshToken], [ReplacedByToken], [Revoked], [RevokedByIp], [UserId])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8);
+INSERT INTO [UserSessions] ([Id], [AccessSessionToken], [EmailAddress], [LoggedInAt], [LoggedOutAt], [RefreshSessionToken])
+VALUES (@p9, @p10, @p11, @p12, @p13, @p14);
+2025-06-14 11:38:07.262 +01:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType5`3[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[<>f__AnonymousType6`3[[System.Guid, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], InvestNaijaAuth, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-06-14 11:38:07.315 +01:00 [INF] Executed action InvestNaijaAuth.Controllers.InvestNaijaAuthController.Login (InvestNaijaAuth) in 1408.9007ms
+2025-06-14 11:38:07.374 +01:00 [INF] Executed endpoint 'InvestNaijaAuth.Controllers.InvestNaijaAuthController.Login (InvestNaijaAuth)'
+2025-06-14 11:38:07.389 +01:00 [INF] Request finished HTTP/2 POST https://localhost:7292/api/InvestNaijaAuth/login - 200 null application/json; charset=utf-8 1566.5365ms
+2025-06-14 11:45:59.720 +01:00 [INF] Request starting HTTP/2 POST https://localhost:7292/api/InvestNaijaAuth/Logout - application/json 184
+2025-06-14 11:45:59.745 +01:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin|User)
+2025-06-14 11:45:59.762 +01:00 [INF] AuthenticationScheme: Bearer was challenged.
+2025-06-14 11:45:59.770 +01:00 [INF] Request finished HTTP/2 POST https://localhost:7292/api/InvestNaijaAuth/Logout - 401 0 null 50.8214ms
+2025-06-14 11:53:11.005 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7292/swagger/index.html - null null
+2025-06-14 11:53:11.532 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7292/swagger/index.html - 200 null text/html;charset=utf-8 532.674ms
+2025-06-14 11:53:11.676 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7292/_vs/browserLink - null null
+2025-06-14 11:53:11.676 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7292/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-14 11:53:11.715 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7292/_framework/aspnetcore-browser-refresh.js - 200 13782 application/javascript; charset=utf-8 39.4719ms
+2025-06-14 11:53:11.932 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7292/_vs/browserLink - 200 null text/javascript; charset=UTF-8 255.9037ms
+2025-06-14 11:53:12.346 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7292/swagger/v1/swagger.json - null null
+2025-06-14 11:53:12.438 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7292/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 91.5722ms
+2025-06-14 11:55:35.096 +01:00 [INF] Application is shutting down...

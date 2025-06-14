@@ -22,7 +22,7 @@ namespace InvestNaijaAuth.Controllers
             _logger = logger;
         }
 
-        [Authorize(Roles = "Admin")]
+        
         [HttpPost("UploadVideo")]
         public async Task<IActionResult> UploadVideo(VideoUploadDTO videoUpload)
         {
@@ -47,7 +47,7 @@ namespace InvestNaijaAuth.Controllers
                 Url = videoUrl
             });
         }
-        [Authorize(Roles = "Admin")]
+
         [HttpDelete("DeleteVideo/{fileName}")]
         public async Task<IActionResult> DeleteVideo(string fileName)
         {
@@ -58,14 +58,14 @@ namespace InvestNaijaAuth.Controllers
 
             return Ok(new { message = "Video deleted successfully" });
         }
-        [Authorize(Roles = "Admin,User")]
+       
         [HttpGet("GetAllVideos")]
         public async Task<IActionResult> GetAllVideos()
         {
             var videoUrls = await _blobService.GetAllVideosAsync();
             return Ok(videoUrls);
         }
-        [Authorize(Roles = "Admin,User")]
+
         [HttpGet("GetVideoByFileName/{fileName}")]
         public async Task<IActionResult> GetVideoById(string fileName)
         {

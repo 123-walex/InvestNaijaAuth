@@ -105,6 +105,9 @@ try
 
     builder.Services.AddScoped<IWalletService, WalletService>();
 
+    builder.Services.AddScoped<IPortfolioService, PortfolioService>();
+
+    builder.Services.AddHttpContextAccessor();
 
     var app = builder.Build();
 

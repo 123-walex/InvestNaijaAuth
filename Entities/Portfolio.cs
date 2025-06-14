@@ -29,7 +29,9 @@ namespace InvestNaijaAuth.Entities
 
             public Stock Stock { get; set; } = null!;
             public User User { get; set; } = null!;
-            public string Symbol { get; set; }
-    }
 
-    }
+            [Required]
+            public string Symbol { get; set; } = null!;
+            public bool IsDeleted { get; set; }
+        }
+}

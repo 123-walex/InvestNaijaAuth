@@ -22,13 +22,14 @@ namespace InvestNaijaAuth.Servicies
         private readonly InvestNaijaDBContext _context;
         private readonly IMapper _mapper;
         private readonly IHttpContextAccessor _httpContextAccessor;
+        private readonly ILogger<PortfolioService> _logger;
 
-
-        public PortfolioService(InvestNaijaDBContext context, IMapper mapper , IHttpContextAccessor httpContextAccessor)
+        public PortfolioService(InvestNaijaDBContext context, IMapper mapper , IHttpContextAccessor httpContextAccessor , ILogger<PortfolioService> logger)
         {
             _context = context;
             _mapper = mapper;
             _httpContextAccessor = httpContextAccessor;
+            _logger = logger;
         }
 
         public async Task BuyStockAsync( BuyStockDTO buy)
@@ -139,7 +140,6 @@ namespace InvestNaijaAuth.Servicies
 
             return portfolioDTOs;
         }
-
-
     }
 }
+

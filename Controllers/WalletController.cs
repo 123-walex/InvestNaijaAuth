@@ -33,7 +33,7 @@ namespace InvestNaijaAuth.Controllers
             var result = await _walletService.CreateWalletAsync(wallet);
             return Ok(result);
         }
-        [Authorize(Roles = "Admin")]
+    
         [HttpGet("Getwallet/{walletId}")]
         public async Task<IActionResult> GetWalletById(Guid walletId)
         {
@@ -53,14 +53,14 @@ namespace InvestNaijaAuth.Controllers
             var result = await _walletService.DebitWalletAsync(debit);
             return Ok(result);
         }
-        [Authorize(Roles = "Admin")]
+    
         [HttpGet("{walletId}/GetWalletTransactions")]
         public async Task<IActionResult> GetWalletTransactions(Guid walletId)
         {
             var transactions = await _walletService.GetWalletTransactionsAsync(walletId);
             return Ok(transactions);
         }
-        [Authorize(Roles = "Admin")]
+      
         [HttpGet("{walletId}/UserExists")]
         public async Task<IActionResult> WalletExists(Guid walletId)
         {

@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace InvestNaijaAuth.Migrations
 {
     [DbContext(typeof(InvestNaijaDBContext))]
-    [Migration("20250614082404_initialcreate")]
-    partial class initialcreate
+    [Migration("20250614112724_Almost")]
+    partial class Almost
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -43,6 +43,9 @@ namespace InvestNaijaAuth.Migrations
 
                     b.Property<DateTime>("DateBought")
                         .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
 
                     b.Property<decimal>("Quantity")
                         .HasColumnType("decimal(18,2)");
@@ -300,6 +303,9 @@ namespace InvestNaijaAuth.Migrations
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
 
                     b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("datetime2");

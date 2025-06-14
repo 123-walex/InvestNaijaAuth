@@ -57,6 +57,7 @@ namespace InvestNaijaAuth.Controllers
                 return BadRequest(new { error = ex.Message });
             }
         }
+
     }
 }
 

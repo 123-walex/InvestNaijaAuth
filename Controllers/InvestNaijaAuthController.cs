@@ -21,13 +21,14 @@ namespace InvestNaijaAuth.Controllers
         private readonly IMapper _mapper;
         private readonly ILogger<InvestNaijaAuthController> _logger;
         private readonly ITokenService _tokenservice;
-
+        private readonly IPortfolioService _portfolioservice;
         public InvestNaijaAuthController(
                            IConfiguration configuration,
                            InvestNaijaDBContext context,
                            IMapper mapper,
                            ILogger<InvestNaijaAuthController> logger,
-                           ITokenService tokenService
+                           ITokenService tokenService,
+                           IPortfolioService portfolioservice
                            )
         {
             _configuration = configuration;
@@ -35,7 +36,7 @@ namespace InvestNaijaAuth.Controllers
             _mapper = mapper;
             _logger = logger;
             _tokenservice = tokenService;
-
+            _portfolioservice = portfolioservice;
         }
         [AllowAnonymous]
         [HttpPost("Signup")]
@@ -134,6 +135,7 @@ namespace InvestNaijaAuth.Controllers
 
                     if (login.HashedPassword == Loginentity.HashedPassword && login.EmailAddress == Loginentity.EmailAddress)
                     {
+
                         _logger.LogInformation("Credentials Successfully Verified , TraceId : {requestId} , RequestedBy : {Username} , Payload : {LoginDTO} ", requestId, Loginentity.Username, login);
 
                         var ipAddress = HttpContext.Connection.RemoteIpAddress?.ToString() ?? "unknown";
@@ -141,6 +143,7 @@ namespace InvestNaijaAuth.Controllers
                         // Generate tokens
                         accessToken = _tokenservice.CreateAccessToken(Loginentity);
                         refreshToken = _tokenservice.CreateRefreshToken(ipAddress);
+
 
                         // Get or create user session
                         var userSession = await _context.UserSessions
@@ -155,6 +158,30 @@ namespace InvestNaijaAuth.Controllers
                                 EmailAddress = Loginentity.EmailAddress
                             };
                             _context.UserSessions.Add(userSession);
+                        }
+
+                        // Check if the user already has a wallet
+                        var existingWallet = await _context.Wallet
+                            .FirstOrDefaultAsync(w => w.UserId == Loginentity.Id && !w.IsDeleted);
+
+                        if (existingWallet == null)
+                        {
+                            var newWallet = new Wallet
+                            {
+                                WalletId = Guid.NewGuid(),
+                                UserId = Loginentity.Id,
+                                Balance = 0,
+                                CreatedAt = DateTime.UtcNow,
+                                UpdatedAt = DateTime.UtcNow,
+                                IsDeleted = false
+                            };
+
+                            _context.Wallet.Add(newWallet);
+                            _logger.LogInformation("Wallet created for user {UserId} during login. TraceId: {requestId}", Loginentity.Id, requestId);
+                        }
+                        else
+                        {
+                            _logger.LogInformation("Wallet already exists for user {UserId}. TraceId: {requestId}", Loginentity.Id, requestId);
                         }
 
                         // Update session

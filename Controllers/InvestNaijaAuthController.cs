@@ -6,6 +6,8 @@ using InvestNaijaAuth.Servicies;
 using InvestNaijaAuth.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authorization;
+using System.Security.Claims;
+using User_Authapi.DTO_s;
 
 namespace InvestNaijaAuth.Controllers
 {
@@ -256,6 +258,132 @@ namespace InvestNaijaAuth.Controllers
                 return StatusCode(500, "An error occurred while logging out.");
             }
         }
-       
+        [Authorize(Roles = "Admin,User")]
+        [HttpPut("UpdateUser")]
+        public async Task<IActionResult> UpdateUser(UpdateUserDTO updateDto)
+        {
+            var requestId = HttpContext.TraceIdentifier;
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+
+            if (string.IsNullOrEmpty(userId))
+                return Unauthorized("User not authenticated");
+
+            var user = await _context.User.FindAsync(Guid.Parse(userId));
+            if (user == null || user.IsDeleted)
+                return NotFound("User not found");
+
+            if (!string.IsNullOrWhiteSpace(updateDto.UserName))
+                user.Username = updateDto.UserName;
+
+            if (!string.IsNullOrWhiteSpace(updateDto.EmailAddress))
+                user.EmailAddress = updateDto.EmailAddress;
+
+            if (!string.IsNullOrWhiteSpace(updateDto.HashedPassword))
+                user.HashedPassword = updateDto.HashedPassword;
+
+            user.UpdatedAt = DateTime.UtcNow;
+
+            await _context.SaveChangesAsync();
+
+            _logger.LogInformation("User updated successfully. TraceId: {requestId}, UserId: {UserId}", requestId, user.Id);
+            return Ok(new { message = "User updated successfully" });
+        }
+        [Authorize(Roles = "Admin,User")]
+        [HttpPatch("PartialUpdateUser")]
+        public async Task<IActionResult> PatchUser([FromBody] PartialUpdateUserDTO patchDto)
+        {
+            var requestId = HttpContext.TraceIdentifier;
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+
+            if (string.IsNullOrEmpty(userId))
+                return Unauthorized("User not authenticated");
+
+            var user = await _context.User.FindAsync(Guid.Parse(userId));
+            if (user == null || user.IsDeleted)
+            {
+                _logger.LogWarning("Patch failed: User not found or deleted. TraceId: {requestId}", requestId);
+                return NotFound("User not found");
+            }
+
+            bool changesMade = false;
+
+            if (!string.IsNullOrWhiteSpace(patchDto.UserName) && patchDto.UserName != user.Username)
+            {
+                user.Username = patchDto.UserName;
+                changesMade = true;
+            }
+
+            if (!string.IsNullOrWhiteSpace(patchDto.EmailAddress) && patchDto.EmailAddress != user.EmailAddress)
+            {
+                user.EmailAddress = patchDto.EmailAddress;
+                changesMade = true;
+            }
+
+            if (!string.IsNullOrWhiteSpace(patchDto.HashedPassword) && patchDto.HashedPassword != user.HashedPassword)
+            {
+                user.HashedPassword = patchDto.HashedPassword;
+                changesMade = true;
+            }
+
+            if (!changesMade)
+            {
+                return BadRequest("No valid updates provided.");
+            }
+
+            user.UpdatedAt = DateTime.UtcNow;
+            await _context.SaveChangesAsync();
+
+            _logger.LogInformation("User partially updated. TraceId: {requestId}, UserId: {UserId}", requestId, user.Id);
+            return Ok(new { message = "User partially updated successfully" });
+        }
+
+        [Authorize(Roles = "Admin,User")]
+        [HttpDelete("SoftDeleteUser")]
+        public async Task<IActionResult> DeleteUser()
+        {
+            var isAdmin = User.IsInRole("Admin");
+
+            var requestId = HttpContext.TraceIdentifier;
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+
+            if (string.IsNullOrEmpty(userId))
+                return Unauthorized("User not authenticated");
+
+            var user = await _context.User.FindAsync(Guid.Parse(userId));
+            if (user == null || user.IsDeleted)
+                return NotFound("User not found or already deleted");
+
+            user.IsDeleted = true;
+            user.DeletedAt = DateTime.UtcNow;
+
+            await _context.SaveChangesAsync();
+
+            _logger.LogInformation("User soft-deleted successfully. TraceId: {requestId}, UserId: {UserId}", requestId, user.Id);
+            return Ok(new { message = "User deleted successfully" });
+        }
+        [Authorize(Roles = "Admin")]
+        [HttpDelete("HardDeleteUser/{userId}")]
+        public async Task<IActionResult> DeleteUser(Guid userId)
+        {
+            var requestId = HttpContext.TraceIdentifier;
+            var adminName = User.Identity?.Name ?? "Unknown";
+
+            _logger.LogInformation("Received hard delete request. TraceId: {requestId}, Admin: {Admin}, TargetUserId: {UserId}", requestId, adminName, userId);
+
+            var user = await _context.User.FindAsync(userId);
+            if (user == null)
+            {
+                _logger.LogWarning("User not found for hard delete. TraceId: {requestId}, Admin: {Admin}", requestId, adminName);
+                return NotFound("User not found.");
+            }
+
+            _context.User.Remove(user);
+            await _context.SaveChangesAsync();
+
+            _logger.LogInformation("User permanently deleted. TraceId: {requestId}, Admin: {Admin}, DeletedUserId: {UserId}", requestId, adminName, userId);
+
+            return Ok(new { message = $"User with ID {userId} permanently deleted." });
+        }
+
     }
 }

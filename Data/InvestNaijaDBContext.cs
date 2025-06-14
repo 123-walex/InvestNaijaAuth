@@ -15,6 +15,9 @@ namespace InvestNaijaAuth.Data
         public DbSet<RefreshTokens> RefreshTokens { get; set; }
         public DbSet<Wallet> Wallet { get; set; } 
         public DbSet<WalletTransaction> WalletTransaction { get; set; }
+        public DbSet<Stock> Stocks { get; set; }
+        public DbSet<Portfolio> Portfolios { get; set; }
+        public DbSet<StockTransaction> StockTransactions { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -59,6 +62,45 @@ namespace InvestNaijaAuth.Data
             modelBuilder.Entity<WalletTransaction>()
                 .Property(w => w.Type)
                 .HasConversion<string>();
+
+            // Configure Stock entity
+            modelBuilder.Entity<Stock>(entity =>
+            {
+                entity.HasKey(e => e.StockId);
+                entity.Property(e => e.Symbol).IsRequired();
+                entity.Property(e => e.Name).IsRequired();
+                entity.Property(e => e.CurrentPrice).HasPrecision(18, 2);
+            });
+
+            // Configure Portfolio entity
+            modelBuilder.Entity<Portfolio>(entity =>
+            {
+                entity.HasKey(e => e.PortfolioId);
+                entity.HasOne<User>()
+                    .WithMany()
+                    .HasForeignKey(e => e.UserId)
+                    .OnDelete(DeleteBehavior.Cascade);
+                entity.HasOne<Stock>()
+                    .WithMany()
+                    .HasForeignKey(e => e.StockId)
+                    .OnDelete(DeleteBehavior.Restrict);
+                entity.Property(e => e.AveragePrice).HasPrecision(18, 2);
+            });
+
+            // Configure StockTransaction entity
+            modelBuilder.Entity<StockTransaction>(entity =>
+            {
+                entity.HasKey(e => e.TransactionId);
+                entity.HasOne<User>()
+                    .WithMany()
+                    .HasForeignKey(e => e.UserId)
+                    .OnDelete(DeleteBehavior.Cascade);
+                entity.HasOne<Stock>()
+                    .WithMany()
+                    .HasForeignKey(e => e.StockId)
+                    .OnDelete(DeleteBehavior.Restrict);
+                entity.Property(e => e.Price).HasPrecision(18, 2);
+            });
         }
     }
 }

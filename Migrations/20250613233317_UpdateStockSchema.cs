@@ -6,11 +6,38 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace InvestNaijaAuth.Migrations
 {
     /// <inheritdoc />
-    public partial class initialcreate : Migration
+    public partial class UpdateStockSchema : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.CreateTable(
+                name: "Stocks",
+                columns: table => new
+                {
+                    StockId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Symbol = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CurrentPrice = table.Column<decimal>(type: "decimal(18,2)", precision: 18, scale: 2, nullable: false),
+                    PreviousClose = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    OpeningPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    HighPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
+                    LowPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
+                    Change = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
+                    PercChange = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
+                    CalculateChangePercent = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
+                    Trades = table.Column<int>(type: "int", nullable: false),
+                    Volume = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    Value = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    Market = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Sector = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    TradeDate = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Stocks", x => x.StockId);
+                });
+
             migrationBuilder.CreateTable(
                 name: "User",
                 columns: table => new
@@ -35,6 +62,33 @@ namespace InvestNaijaAuth.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Portfolios",
+                columns: table => new
+                {
+                    PortfolioId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    UserId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    StockId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Quantity = table.Column<int>(type: "int", nullable: false),
+                    AveragePrice = table.Column<decimal>(type: "decimal(18,2)", precision: 18, scale: 2, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Portfolios", x => x.PortfolioId);
+                    table.ForeignKey(
+                        name: "FK_Portfolios_Stocks_StockId",
+                        column: x => x.StockId,
+                        principalTable: "Stocks",
+                        principalColumn: "StockId",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Portfolios_User_UserId",
+                        column: x => x.UserId,
+                        principalTable: "User",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "RefreshTokens",
                 columns: table => new
                 {
@@ -53,6 +107,35 @@ namespace InvestNaijaAuth.Migrations
                     table.PrimaryKey("PK_RefreshTokens", x => x.Id);
                     table.ForeignKey(
                         name: "FK_RefreshTokens_User_UserId",
+                        column: x => x.UserId,
+                        principalTable: "User",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "StockTransactions",
+                columns: table => new
+                {
+                    TransactionId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    UserId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    StockId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Quantity = table.Column<int>(type: "int", nullable: false),
+                    Price = table.Column<decimal>(type: "decimal(18,2)", precision: 18, scale: 2, nullable: false),
+                    Type = table.Column<int>(type: "int", nullable: false),
+                    PerformedAt = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_StockTransactions", x => x.TransactionId);
+                    table.ForeignKey(
+                        name: "FK_StockTransactions_Stocks_StockId",
+                        column: x => x.StockId,
+                        principalTable: "Stocks",
+                        principalColumn: "StockId",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_StockTransactions_User_UserId",
                         column: x => x.UserId,
                         principalTable: "User",
                         principalColumn: "Id",
@@ -127,8 +210,28 @@ namespace InvestNaijaAuth.Migrations
                 });
 
             migrationBuilder.CreateIndex(
+                name: "IX_Portfolios_StockId",
+                table: "Portfolios",
+                column: "StockId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Portfolios_UserId",
+                table: "Portfolios",
+                column: "UserId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_RefreshTokens_UserId",
                 table: "RefreshTokens",
+                column: "UserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_StockTransactions_StockId",
+                table: "StockTransactions",
+                column: "StockId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_StockTransactions_UserId",
+                table: "StockTransactions",
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
@@ -157,13 +260,22 @@ namespace InvestNaijaAuth.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
+                name: "Portfolios");
+
+            migrationBuilder.DropTable(
                 name: "RefreshTokens");
+
+            migrationBuilder.DropTable(
+                name: "StockTransactions");
 
             migrationBuilder.DropTable(
                 name: "UserSessions");
 
             migrationBuilder.DropTable(
                 name: "WalletTransaction");
+
+            migrationBuilder.DropTable(
+                name: "Stocks");
 
             migrationBuilder.DropTable(
                 name: "Wallet");

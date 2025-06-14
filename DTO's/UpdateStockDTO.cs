@@ -1,12 +1,11 @@
-﻿namespace InvestNaijaAuth.Entities
+﻿namespace InvestNaijaAuth.DTO_s
 {
-    public class Stock
+    public class UpdateStockDTO
     {
-        public Guid StockId { get; set; } = Guid.NewGuid();
-        public required string Symbol { get; set; } = string.Empty;
-        public required string Name { get; set; } = string.Empty;
+        public string Symbol { get; set; } = null!;
+        public string Name { get; set; } = null!;
         public decimal? CurrentPrice { get; set; }
-        public  decimal? PreviousClose { get; set; }
+        public decimal? PreviousClose { get; set; }
         public decimal? OpeningPrice { get; set; }
         public decimal? HighPrice { get; set; }
         public decimal? LowPrice { get; set; }
@@ -16,8 +15,9 @@
         public int Trades { get; set; }
         public decimal Volume { get; set; }
         public decimal Value { get; set; }
-        public required string Market { get; set; } = string.Empty;
-        public required string Sector { get; set; } = string.Empty;
+        public string Market { get; set; } = null!;
+        public string Sector { get; set; } = null!;
         public DateTime TradeDate { get; set; }
     }
+
 }

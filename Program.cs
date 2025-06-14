@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using InvestNaijaAuth.Servicies;
+using InvestNaijaAuth.Services;
 
 Log.Logger = new LoggerConfiguration()
     .Enrich.FromLogContext()
@@ -62,7 +63,9 @@ try
 
     builder.Services.AddAutoMapper(typeof(MappingProfile));
 
-    builder.Services.AddScoped<NGXScraperService>();
+    builder.Services.AddHttpClient<NGXScraperService>();
+
+    builder.Services.AddScoped<IStockService, StockService>();
 
     builder.Services.AddScoped<ITokenService, TokenService>();
 
@@ -77,10 +80,8 @@ try
 
     // Configure the HTTP request pipeline
    
-    
         app.UseSwagger();
         app.UseSwaggerUI();
-    
 
     app.UseHttpsRedirection();
 
@@ -102,7 +103,6 @@ try
     app.UseAuthentication();
     app.UseAuthorization();
 
-    app.MapGet("/", () => "InvestNaijaAuth API is running!");
     app.MapControllers();
 
     app.Run();

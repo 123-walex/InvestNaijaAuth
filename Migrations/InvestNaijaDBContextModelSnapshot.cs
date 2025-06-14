@@ -22,6 +22,34 @@ namespace InvestNaijaAuth.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("InvestNaijaAuth.Entities.Portfolio", b =>
+                {
+                    b.Property<Guid>("PortfolioId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<decimal>("AveragePrice")
+                        .HasPrecision(18, 2)
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
+
+                    b.Property<Guid>("StockId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("PortfolioId");
+
+                    b.HasIndex("StockId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Portfolios");
+                });
+
             modelBuilder.Entity("InvestNaijaAuth.Entities.RefreshTokens", b =>
                 {
                     b.Property<Guid>("Id")
@@ -59,6 +87,104 @@ namespace InvestNaijaAuth.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("RefreshTokens");
+                });
+
+            modelBuilder.Entity("InvestNaijaAuth.Entities.Stock", b =>
+                {
+                    b.Property<Guid>("StockId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<decimal?>("CalculateChangePercent")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal?>("Change")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("CurrentPrice")
+                        .HasPrecision(18, 2)
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal?>("HighPrice")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal?>("LowPrice")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("Market")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("OpeningPrice")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal?>("PercChange")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("PreviousClose")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("Sector")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Symbol")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("TradeDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Trades")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("Value")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("Volume")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.HasKey("StockId");
+
+                    b.ToTable("Stocks");
+                });
+
+            modelBuilder.Entity("InvestNaijaAuth.Entities.StockTransaction", b =>
+                {
+                    b.Property<Guid>("TransactionId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("PerformedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<decimal>("Price")
+                        .HasPrecision(18, 2)
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
+
+                    b.Property<Guid>("StockId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("Type")
+                        .HasColumnType("int");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("TransactionId");
+
+                    b.HasIndex("StockId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("StockTransactions");
                 });
 
             modelBuilder.Entity("InvestNaijaAuth.Entities.User", b =>
@@ -203,6 +329,21 @@ namespace InvestNaijaAuth.Migrations
                     b.ToTable("WalletTransaction");
                 });
 
+            modelBuilder.Entity("InvestNaijaAuth.Entities.Portfolio", b =>
+                {
+                    b.HasOne("InvestNaijaAuth.Entities.Stock", null)
+                        .WithMany()
+                        .HasForeignKey("StockId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("InvestNaijaAuth.Entities.User", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("InvestNaijaAuth.Entities.RefreshTokens", b =>
                 {
                     b.HasOne("InvestNaijaAuth.Entities.User", "User")
@@ -212,6 +353,21 @@ namespace InvestNaijaAuth.Migrations
                         .IsRequired();
 
                     b.Navigation("User");
+                });
+
+            modelBuilder.Entity("InvestNaijaAuth.Entities.StockTransaction", b =>
+                {
+                    b.HasOne("InvestNaijaAuth.Entities.Stock", null)
+                        .WithMany()
+                        .HasForeignKey("StockId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("InvestNaijaAuth.Entities.User", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("InvestNaijaAuth.Entities.UserSessions", b =>

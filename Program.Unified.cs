@@ -2,7 +2,6 @@ using Microsoft.EntityFrameworkCore;
 using InvestNaijaAuth.Data;
 using Serilog;
 using Serilog.Exceptions;
-using Swashbuckle.AspNetCore;
 using InvestNaijaAuth.Mappings;
 using InvestNaijaAuth.MiddleWare;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -28,11 +27,17 @@ try
 {
     var builder = WebApplication.CreateBuilder(args);
 
+    // Add services to the container
     builder.Services.AddControllers();
     builder.Services.AddEndpointsApiExplorer();
     builder.Services.AddSwaggerGen();
 
-    
+    // Add SPA services
+    builder.Services.AddSpaStaticFiles(configuration =>
+    {
+        configuration.RootPath = "InvestNaija/out";
+    });
+
     builder.Services.AddLogging(loggingBuilder =>
     {
         loggingBuilder.AddSerilog(dispose: true);
@@ -79,18 +84,17 @@ try
                 )
                 .AllowAnyHeader()
                 .AllowAnyMethod()
-                .AllowCredentials(); // if using cookies or tokens
+                .AllowCredentials();
             });
     });
-    builder.Host.UseSerilog();
 
+    builder.Host.UseSerilog();
     builder.Services.AddAutoMapper(typeof(MappingProfile));
 
     builder.Services.AddSwaggerGen(c =>
     {
-        c.SwaggerDoc("v1", new OpenApiInfo { Title = "Your API", Version = "v1" });
+        c.SwaggerDoc("v1", new OpenApiInfo { Title = "InvestNaija API", Version = "v1" });
 
-        // Add this block to enable JWT auth in Swagger
         c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
         {
             Name = "Authorization",
@@ -102,33 +106,28 @@ try
         });
 
         c.AddSecurityRequirement(new OpenApiSecurityRequirement
-    {
         {
-            new OpenApiSecurityScheme
             {
-                Reference = new OpenApiReference
+                new OpenApiSecurityScheme
                 {
-                    Type = ReferenceType.SecurityScheme,
-                    Id = "Bearer"
-                }
-            },
-            Array.Empty<string>()
-        }
-    });
+                    Reference = new OpenApiReference
+                    {
+                        Type = ReferenceType.SecurityScheme,
+                        Id = "Bearer"
+                    }
+                },
+                Array.Empty<string>()
+            }
+        });
     });
 
+    // Register services
     builder.Services.AddHttpClient<NGXScraperService>();
-
     builder.Services.AddScoped<IStockService, StockService>();
-
     builder.Services.AddScoped<ITokenService, TokenService>();
-
     builder.Services.AddScoped<AzureBlobService>();
-
     builder.Services.AddScoped<IWalletService, WalletService>();
-
     builder.Services.AddScoped<IPortfolioService, PortfolioService>();
-
     builder.Services.AddHttpContextAccessor();
 
     var app = builder.Build();
@@ -136,11 +135,21 @@ try
     app.UseMiddleware<TraceIdEnricherMiddleWare>();
 
     // Configure the HTTP request pipeline
-   
+    if (app.Environment.IsDevelopment())
+    {
         app.UseSwagger();
         app.UseSwaggerUI();
+    }
 
     app.UseHttpsRedirection();
+    app.UseStaticFiles();
+    
+    if (!app.Environment.IsDevelopment())
+    {
+        app.UseSpaStaticFiles();
+    }
+
+    app.UseCors("AllowFrontend");
 
     // Add logging middleware
     app.Use(async (context, next) =>
@@ -161,6 +170,17 @@ try
     app.UseAuthorization();
 
     app.MapControllers();
+
+    // Configure SPA
+    app.UseSpa(spa =>
+    {
+        spa.Options.SourcePath = "InvestNaija";
+
+        if (app.Environment.IsDevelopment())
+        {
+            spa.UseProxyToSpaDevelopmentServer("http://localhost:3000");
+        }
+    });
 
     app.Run();
 }

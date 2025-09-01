@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using InvestNaijaAuth.Enums;
 
 namespace InvestNaijaAuth.DTO_s
 {
@@ -12,7 +13,8 @@ namespace InvestNaijaAuth.DTO_s
        public string? Description { get; set; }
        public string? Category { get; set; }
        public TimeSpan Duration { get; set; }
-   
+       public required VideoLevel Level { get; set; }
+
     }
 }
 

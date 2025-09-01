@@ -11,6 +11,7 @@ using User_Authapi.DTO_s;
 
 namespace InvestNaijaAuth.Controllers
 {
+// configure login mail
     [ApiController]
     [Route("api/[controller]")]
     [Authorize]
@@ -170,7 +171,7 @@ namespace InvestNaijaAuth.Controllers
                             {
                                 WalletId = Guid.NewGuid(),
                                 UserId = Loginentity.Id,
-                                Balance = 0,
+                                AccountBalance = 0,
                                 CreatedAt = DateTime.UtcNow,
                                 UpdatedAt = DateTime.UtcNow,
                                 IsDeleted = false

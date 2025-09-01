@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using InvestNaijaAuth.Enums;
+using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
 
 namespace InvestNaijaAuth.Entities
@@ -29,6 +30,7 @@ namespace InvestNaijaAuth.Entities
 
         [Precision(18, 2)]
         public decimal WalletBalance { get; set; } = 30000;
+        public Plan plan { get; set; }
     }
 }
 

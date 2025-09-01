@@ -7,6 +7,10 @@ using System.IO;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Azure.Storage.Sas;
+using InvestNaijaAuth.Enums;
+using YoutubeExplode;
+using YoutubeExplode.Videos.Streams;
+using System.Diagnostics;
 
 namespace InvestNaijaAuth.Servicies
 {
@@ -17,6 +21,17 @@ namespace InvestNaijaAuth.Servicies
         public AzureBlobService(IOptions<AzureBlobSettings> settings)
         {
             _settings = settings.Value;
+        }
+
+        private string GetMimeType(string containerName)
+        {
+            return containerName.ToLower() switch
+            {
+                "mp4" => "video/mp4",
+                "webm" => "video/webm",
+                "3gp" => "video/3gpp",
+                _ => "application/octet-stream" // fallback
+            };
         }
 
         public async Task<string> UploadAsync(Stream fileStream, string fileName, string contentType)
@@ -120,6 +135,22 @@ namespace InvestNaijaAuth.Servicies
 
             return null; // Not found
         }
+        public async Task<List<string>> GetVideosByLevelAsync(string level)
+        {
+            var blobUri = $"https://{_settings.AccountName}.blob.core.windows.net";
+            var credential = new Azure.Storage.StorageSharedKeyCredential(_settings.AccountName, _settings.AccountKey);
+            var blobServiceClient = new BlobServiceClient(new Uri(blobUri), credential);
+            var containerClient = blobServiceClient.GetBlobContainerClient(_settings.ContainerName);
 
+            var blobUrls = new List<string>();
+
+            await foreach (var blobItem in containerClient.GetBlobsAsync(prefix: $"{level.ToLower()}/"))
+            {
+                var sasUrl = GetSasUri(blobItem.Name);
+                blobUrls.Add(sasUrl);
+            }
+
+            return blobUrls;
+        }
     }
 }

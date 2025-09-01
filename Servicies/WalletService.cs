@@ -39,7 +39,7 @@ namespace InvestNaijaAuth.Servicies
             {
                 WalletId= Guid.NewGuid(),
                 UserId = wallet.UserId,
-                Balance = 30000,
+                AccountBalance = 30000,
                 CreatedAt = DateTime.UtcNow
             };
 
@@ -75,7 +75,7 @@ namespace InvestNaijaAuth.Servicies
                 PerformedAt = DateTime.UtcNow
             };
 
-            fundwallet.Balance += fund.Amount;
+            fundwallet.AccountBalance += fund.Amount;
 
             _context.WalletTransaction.Add(transaction);
             _context.Wallet.Update(fundwallet);
@@ -100,10 +100,10 @@ namespace InvestNaijaAuth.Servicies
                 PerformedAt = DateTime.UtcNow
             };
 
-            if (defund.Balance < debit.Amount)
+            if (defund.AccountBalance < debit.Amount)
                 throw new Exception("Insufficient funds");
 
-            defund.Balance -= debit.Amount;
+            defund.AccountBalance -= debit.Amount;
 
             _context.WalletTransaction.Add(transaction);
             _context.Wallet.Update(defund);
